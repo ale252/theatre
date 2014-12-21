@@ -7,20 +7,28 @@
     <div class="tribunes">
         {% for nam, secteur in secteurs %}
 
+            <div class="trib">
+                {{ form_start(formulaires[nam+1]) }}
 
-            {{ form_start(formulaires[nam+1]) }}
-            {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs)}) }}
-            {{ form_end(formulaires[nam+1]) }} 
+                {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs) })}}
 
+                {{ form_end(formulaires[nam+1]) }} 
+                <div class="info-bulle">
+
+                    <p>Info about products</p>
+
+                </div>
+            </div>
 
         {% endfor %}
     </div>
-        <div class="prixSecteur">
-            <h2 >Prix des différents secteurs:</h2>
-            {% for nam, secteur in secteurs %}
+    <div class="prixSecteur">
+        <h2 >Prix des différents secteurs:</h2>
+        {% for nam, secteur in secteurs %}
 
-                <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}}<br />
-            {% endfor %}
-        </div>
-    
+            <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}} CHF<br />
+
+        {% endfor %}
+    </div>
+
 {% endblock %}
