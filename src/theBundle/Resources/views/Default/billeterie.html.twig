@@ -1,24 +1,26 @@
 {% extends "::base.html.twig" %}
 {% block content %}
-
+    <h1 class="titreBilleterie">Choisissez votre secteur pour commander des places</h1>
     <div class="scene">
         <span class="sceneText">Scène</span>
     </div>
     <div class="tribunes">
         {% for nam, secteur in secteurs %}
 
-                    
-                        {{ form_start(formulaires[nam+1]) }}
-                        {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs)}) }}
-                        {{ form_end(formulaires[nam+1]) }} 
-                    
+
+            {{ form_start(formulaires[nam+1]) }}
+            {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs)}) }}
+            {{ form_end(formulaires[nam+1]) }} 
+
 
         {% endfor %}
-        <h2>Prix:</h2>
-        {% for nam, secteur in secteurs %}
-            
-            <b<SECTEUR</b> {{secteur.secteurs}}: {{secteur.prix}}<br />
-        {% endfor %}
-        
     </div>
+        <div class="prixSecteur">
+            <h2 >Prix des différents secteurs:</h2>
+            {% for nam, secteur in secteurs %}
+
+                <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}}<br />
+            {% endfor %}
+        </div>
+    
 {% endblock %}
