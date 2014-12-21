@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+
+
+
+    {% for nam, prix in places %}
+        {% for key,num in formulaires %}
+            {% if key == nam+1 %}
+                <li>
+                    {{ form_start(num) }}
+                    {{ form_widget(num.add, {'label': prix.id}) }}
+                    {{ form_end(num) }} 
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

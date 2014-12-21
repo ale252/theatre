@@ -1,0 +1,30 @@
+theatre_homepage:
+    path:     /
+    defaults: { _controller: theBundle:Default:index }
+
+theatre_articles:
+    path:     /articles
+    defaults: { _controller: theBundle:Default:articles }
+
+theatre_admin:
+    path:     /admin
+    defaults: { _controller: theBundle:Admin:admin }
+
+theatre_ajouteArticle:
+    path:     /ajouteArticle
+    defaults: { _controller: theBundle:Admin:ajouteArticle }
+
+theatre_modifierArticle:
+    path:     /modifierArticle/{id}
+    defaults: { _controller: theBundle:Admin:modifierArticle }
+    
+theatre_effacerArticle:
+    path:     /effacerArticle/{id}
+    defaults: { _controller: theBundle:Admin:effacerArticle }
+
+theatre_billeterie:
+    path:     /billeterie/{numPlace}
+    defaults: { _controller: theBundle:Default:billeterie,numPlace:-1 }
+theatre_panier:
+    path:     /panier
+    defaults: { _controller: theBundle:Default:panier }

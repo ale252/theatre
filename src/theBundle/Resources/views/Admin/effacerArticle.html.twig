@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+    <h2>ATTENTION, vous êtes sur le point d'effacer l'article dont le tite est: </h2>
+    {{ article.titre }}
+    <h2>Et le contenu est: </h2>
+    {{ article.contenu|raw }}
+
+    <h2>Êtes-vous sûr de vouloir continuer? Cette action sera <font size="+2" color="red">définitive</font>!!!</h2>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.oui, {'label': "Oui" , 'attr': {'class': 'btn btn-danger btn-lg col-md-2'} }) }}
+        {{ form_row(form.non, {'label': "Non" , 'attr': {'class': 'btn btn-success btn-lg col-md-2 boutonOui'} }) }}
+        {{ form_end(form) }} 
+
+{% endblock %}

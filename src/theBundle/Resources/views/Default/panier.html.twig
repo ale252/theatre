@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+
+    <h2>Le billets seront en vente tout prochainement!!</h2>
+    <table>
+        <tr>
+            <th class="headTable">Places</th>
+            <th class="headTable">Prix</th>
+            <th class="headTable">Quantité</th>
+            <th class="headTable">Action</th>
+        </tr>
+        {% for place, quantite in panier %}
+            {% for key,num in formulaires %}
+
+                {% if key == place %}
+                    {{ form_start(num) }}
+                    {{ form_errors(num) }}
+                    <tr>
+                        
+                        <td class="col-md-3"><span>{{ form_widget(num.effacer, {'label': "X"}) }}Siège: {{place}}</span></td>
+                        <td class="col-md-2"> <span>{{places[place-1].prix}}</span></td>
+                        <td class="col-md-2"><span>{{quantite}}</span></td>
+                        <td>
+
+                            
+                            {{ form_widget(num.plus, {'label': "+"}) }}
+                            {{ form_widget(num.moins, {'label': "-"}) }}
+
+                        </td>
+                        {{ form_end(num) }} 
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+        {% endfor %}
+    </table>
+    {#    {% for nam, prix in places %}
+    
+            {% for key,num in formulaires %}
+    
+                {% if key == nam+1 %}
+                    <span class="col-md-3">Place n°: {{prix.id}}</span> <span class="col-md-1">Prix:{{prix.prix}}</span><span class="col-md-2">Quantités:{{panier[prix.id]}}</span>
+                    {{ form_start(num) }}
+                    {{ form_errors(num) }}
+                    {{ form_widget(num.plus, {'label': "+"}) }}
+                    {{ form_widget(num.moins, {'label': "-"}) }}
+                    {{ form_end(num) }} 
+    
+                {% endif %}
+            {% endfor %}
+        {% endfor %}#}
+    <span class="col-md-2">Total:{{total}}</span>
+{% endblock %}
