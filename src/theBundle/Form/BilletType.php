@@ -14,7 +14,7 @@ class BilletType extends AbstractType {
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('add', 'submit');
+        $builder->add('add', 'submit', array('attr' => array('class' => 'col-md-4 secteur')));
     }
 
     public function getName() {

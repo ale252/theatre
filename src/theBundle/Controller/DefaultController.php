@@ -99,11 +99,11 @@ class DefaultController extends Controller {
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
-                ->getRepository('theBundle:places');
-        $places = $repository->findAll();
+                ->getRepository('theBundle:Secteurs');
+        $secteurs = $repository->findAll();
         $formulaires;
         $a = 0;
-        foreach ($places as $value) {
+        foreach ($secteurs as $value) {
             $form = $this->createForm(new BilletType($value->getId()));
             $formulaires[$value->getId()] = $form->createView();
             $form->handleRequest($request);
@@ -115,9 +115,7 @@ class DefaultController extends Controller {
             }
             $a++;
         }
-
-
-        return $this->render('theBundle:Default:billeterie.html.twig', array('places' => $places, 'form' => $form->createView(), 'formulaires' => $formulaires));
+        return $this->render('theBundle:Default:billeterie.html.twig', array('secteurs' => $secteurs, 'form' => $form->createView(), 'formulaires' => $formulaires));
     }
 
     public function panierAction(Request $request) {
