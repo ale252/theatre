@@ -106,18 +106,20 @@ class DefaultController extends Controller {
         foreach ($secteurs as $value) {
             $form = $this->createForm(new BilletType($value->getId()));
             $formulaires[$value->getId()] = $form->createView();
-            
             $form->handleRequest($request);
             if ($form->isValid()) {
-                var_dump($form);
-                    exit;
                 if ($form->get('ajouterCont')->isClicked()) {
-                    var_dump($form);
-                    exit;
-                    $this->addElemCart($request, $value->getId());
+                    $quantite = $form->getData()['quant'];
+                    for ($i = 1; $i <= $quantite; $i++) {
+                        $this->addElemCart($request, $value->getId());
+                    }
                 }
                 if ($form->get('ajouterRest')->isClicked()) {
-                    $this->addElemCart($request, $value->getId());
+                    $quantite = $form->getData()['quant'];
+                    for ($i = 1; $i <= $quantite; $i++) {
+                        $this->addElemCart($request, $value->getId());
+                    }
+                    return $this->redirect($this->generateUrl('theatre_panier'));
                 }
             }
             $a++;
@@ -131,13 +133,13 @@ class DefaultController extends Controller {
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
-                ->getRepository('theBundle:places');
-        $places = $repository->findAll();
+                ->getRepository('theBundle:Secteurs');
+        $secteurs = $repository->findAll();
         $total = $this->totalCart($request);
         $panier = $session->get('panier');
         $formulaires;
         $a = 0;
-        foreach ($places as $value) {
+        foreach ($secteurs as $value) {
             $form = $this->createForm(new CartType($value->getPrix()));
             $formulaires[$value->getId()] = $form->createView();
             $form->handleRequest($request);
@@ -156,7 +158,7 @@ class DefaultController extends Controller {
         }
 
 
-        return $this->render('theBundle:Default:panier.html.twig', array('places' => $places, 'panier' => $panier, 'total' => $total, 'form' => $form->createView(), 'formulaires' => $formulaires));
+        return $this->render('theBundle:Default:panier.html.twig', array('secteurs' => $secteurs, 'panier' => $panier, 'total' => $total, 'form' => $form->createView(), 'formulaires' => $formulaires));
     }
 
 }

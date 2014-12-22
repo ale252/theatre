@@ -9,20 +9,39 @@
             <th class="headTable">Quantité</th>
             <th class="headTable">Action</th>
         </tr>
-        {% for place, quantite in panier %}
+        {#{% for nam, secteur in secteurs %}
+            {{ form_start(formulaires[nam+1]) }}
+            {{ form_errors(formulaires[nam+1]) }}
+            <tr>
+
+                <td class="col-md-3"><span>{{ form_widget(formulaires[nam+1].effacer, {'label': "X"}) }}Secteur: {{secteur.secteurs}}</span></td>
+                <td class="col-md-2"> <span>{{secteur.prix}}</span></td>
+                <td class="col-md-2"><span>{{quantite}}</span></td>
+                <td>
+
+
+                    {{ form_widget(formulaires[nam+1].plus, {'label': "+"}) }}
+                    {{ form_widget(formulaires[nam+1].moins, {'label': "-"}) }}
+
+                </td>
+                {{ form_end(formulaires[nam+1]) }} 
+            </tr>
+
+        {% endfor %}#}
+        {% for place, quantite in secteurs %}
             {% for key,num in formulaires %}
 
                 {% if key == place %}
                     {{ form_start(num) }}
                     {{ form_errors(num) }}
                     <tr>
-                        
-                        <td class="col-md-3"><span>{{ form_widget(num.effacer, {'label': "X"}) }}Siège: {{place}}</span></td>
-                        <td class="col-md-2"> <span>{{places[place-1].prix}}</span></td>
-                        <td class="col-md-2"><span>{{quantite}}</span></td>
+
+                        <td class="col-md-3"><span>{{ form_widget(num.effacer, {'label': "X"}) }}Secteur: {{place}}</span></td>
+                        <td class="col-md-2"> <span>{{secteurs[place-1].prix}}</span></td>
+{#                        <td class="col-md-2"><span>{{quantite}}</span></td>#}
                         <td>
 
-                            
+
                             {{ form_widget(num.plus, {'label': "+"}) }}
                             {{ form_widget(num.moins, {'label': "-"}) }}
 
@@ -31,7 +50,6 @@
                     </tr>
                 {% endif %}
             {% endfor %}
-
         {% endfor %}
     </table>
     {#    {% for nam, prix in places %}

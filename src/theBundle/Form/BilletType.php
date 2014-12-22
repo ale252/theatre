@@ -15,8 +15,8 @@ class BilletType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('ajouterCont', 'button', array('attr' => array('class' => 'btn btn-success')))
-                ->add('ajouterRest', 'button', array('attr' => array('class' => 'btn btn-success')))
+                ->add('ajouterCont', 'submit', array('attr' => array('class' => 'btn btn-success')))
+                ->add('ajouterRest', 'submit', array('attr' => array('class' => 'btn btn-success')))
                 ->add('quant', 'choice', array(
                     'choices' => array(
                         '1' => '1',
