@@ -5,26 +5,10 @@
         <span class="sceneText">Scène</span>
     </div>
 
-    {#    <h2>Example of creating Modals with Twitter Bootstrap</h2>
-        <!-- Button trigger modal -->
-        <button class="btn btn-primary btn-lg" data-toggle="modal" 
-                data-target="#myModal">
-            Launch demo modal
-        </button>#}
-    <!-- exemple de popup -->
-    <div class="container">
-        <h2>Bootstrap 3 Modal Vertically Centered</h2>
-        <p class="text-info">*Works with Bootstrap 3 - 3.1.1</p>
-        <p class="lead">Vertically center your modals without declaring a <code>height</code>.<br>Modal <code>max-height</code> does not exceed window height with scrollable <code>.modal-body</code> and adapts on resize.<br>
-        </p> 
+    <!-- Modal -->
 
-        <!-- Button trigger modal -->
-        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Short modal 
-        </button>
-
-        <div class="tribunes">
-            <!-- Modal -->
+    <div class="tribunes">
+        {% for nam, secteur in secteurs %}
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -42,30 +26,23 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            {% for nam, secteur in secteurs %}
+            <button type="button" class="secteur col-md-4" title="<h2>Secteur {{secteur.secteurs}}</h2>"  
+                    data-container="body" data-toggle="modal" data-target="#myModal" data-placement="top" 
+                    data-content='{{ form_start(formulaires[nam+1]) }}
+                    {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs) })}}
+                    {{ form_end(formulaires[nam+1]) }} '>
+                Secteur {{secteur.secteurs}}
+            </button>
+        {% endfor %}
+    </div>
+    <div class="prixSecteur">
+        <h2 >Prix des différents secteurs:</h2>
+        {% for nam, secteur in secteurs %}
 
-                <button type="button" class="secteur col-md-4" title="<h2>Secteur {{secteur.secteurs}}</h2>"  
-                        data-container="body" data-toggle="modal" data-target="#myModal" data-placement="top" 
-                        data-content='{{ form_start(formulaires[nam+1]) }}
-                        {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs) })}}
-                        {{ form_end(formulaires[nam+1]) }} '>
+            <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}} CHF<br />
 
-                    Secteur {{secteur.secteurs}}
-                </button>
-
-            {% endfor %}
-
-
-
-        </div>
-        <div class="prixSecteur">
-            <h2 >Prix des différents secteurs:</h2>
-            {% for nam, secteur in secteurs %}
-
-                <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}} CHF<br />
-
-            {% endfor %}
-        </div>
-    {% endblock %}
+        {% endfor %}
+    </div>
+{% endblock %}
 
 
