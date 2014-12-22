@@ -77,21 +77,21 @@ class DefaultController extends Controller {
     }
 
     public function totalCart($request) {
-        $session = $request->getSession();
-        $r = $session->get('panier');
-        $total = 0;
-        $repository = $this
-                ->getDoctrine()
-                ->getManager()
-                ->getRepository('theBundle:places');
-        foreach ($r as $key => $produit) {
-            $product_id = $key;
-            $prix = $repository->find($product_id)->getPrix();
-            $quantite = $produit;
-            $total = $total + ($prix * $quantite);
-        }
-
-        return $total;
+//        $session = $request->getSession();
+//        $r = $session->get('panier');
+//        $total = 0;
+//        $repository = $this
+//                ->getDoctrine()
+//                ->getManager()
+//                ->getRepository('theBundle:places');
+//        foreach ($r as $key => $produit) {
+//            $product_id = $key;
+//            $prix = $repository->find($product_id)->getPrix();
+//            $quantite = $produit;
+//            $total = $total + ($prix * $quantite);
+//        }
+//
+//        return $total;
     }
 
     public function billeterieAction(Request $request, $numPlace) {
@@ -106,10 +106,17 @@ class DefaultController extends Controller {
         foreach ($secteurs as $value) {
             $form = $this->createForm(new BilletType($value->getId()));
             $formulaires[$value->getId()] = $form->createView();
+            
             $form->handleRequest($request);
-
             if ($form->isValid()) {
-                if ($form->get('add')->isClicked()) {
+                var_dump($form);
+                    exit;
+                if ($form->get('ajouterCont')->isClicked()) {
+                    var_dump($form);
+                    exit;
+                    $this->addElemCart($request, $value->getId());
+                }
+                if ($form->get('ajouterRest')->isClicked()) {
                     $this->addElemCart($request, $value->getId());
                 }
             }
