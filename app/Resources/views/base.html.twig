@@ -12,13 +12,11 @@
         <meta name="keywords" content="" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <!--[if lte IE 8]><script src="{{ asset('bundles/theatre/css/ie/html5shiv.js') }}"></script><![endif]-->
-
         <script src="{{ asset('bundles/theatre/js/jquery.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/skel.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/skel-layers.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/init.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/bootstrap.min.js') }}"></script>
-
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 
@@ -66,10 +64,72 @@
             });
         </script>
         <script>
-            $(function ()
-            {
-                $("[data-toggle='popover']").popover({html : true });
+
+
+
+            {#            $('#exampleModal').on('show.bs.modal', function (event) {
+                            var button = $(event.relatedTarget) // Button that triggered the modal
+                            var recipient = button.data('whatever') // Extract info from data-* attributes
+                            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                            var modal = $(this)
+                            modal.find('.modal-title').text('New message to ' + recipient)
+                            modal.find('.modal-body input').val(recipient)
+                        })#}
+
+            {#            /* 
+                         Related StackOverflow answer
+                         http://stackoverflow.com/a/19638199/275333 
+                         */
+
+                        /***** Create the popover **************/
+
+                        var options = {
+                            html: true,
+                            placement: 'top'
+                        };
+                        $(function ()
+                        {
+                            $("[data-toggle='popover']").popover(options);
+                
+                        });
+                        /***** Dismiss all popovers by clicking outside, don't dismiss if clicking inside the popover content  **************/
+
+            $('body').on('click', function (e) {
+                $('[data-toggle="popover"]').each(function () {
+                    //the 'is' for buttons that trigger popups
+                    //the 'has' for icons within a button that triggers a popup
+                    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                        $(this).popover('hide');
+                    }
+                });
+            });#}
+            {#$(function ()
+                    {
+                        $("[data-toggle='popover']").popover(options);
+                    });
+
+        $('body').on('click', function (e) {
+            $('[data-toggle="popover"]').each(function () {
+                //the 'is' for buttons that trigger popups
+                //the 'has' for icons within a button that triggers a popup
+                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                    $(this).popover('hide');
+                }
             });
+        });#}
+
+            {#                $('body').on('click', function (e) {
+                                $('[data-toggle="popover"]').each(function () {
+                                    //the 'is' for buttons that trigger popups
+                                    //the 'has' for icons within a button that triggers a popup
+                                    if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                                        $(this).popover('hide');
+                                    }
+                                });
+                            });
+            #}
+
         </script>
     </head>
     <!--

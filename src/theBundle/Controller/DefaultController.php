@@ -101,67 +101,22 @@ class DefaultController extends Controller {
                 ->getManager()
                 ->getRepository('theBundle:Secteurs');
         $secteurs = $repository->findAll();
+        $formulaires;
+        $a = 0;
+        foreach ($secteurs as $value) {
+            $form = $this->createForm(new BilletType($value->getId()));
+            $formulaires[$value->getId()] = $form->createView();
+            $form->handleRequest($request);
 
-        $form = $this->createForm(new BilletType());
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            if ($form->get('secteurB')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
+            if ($form->isValid()) {
+                if ($form->get('add')->isClicked()) {
+                    $this->addElemCart($request, $value->getId());
+                }
             }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurC')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurD')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurE')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurF')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurG')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurH')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurI')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurJ')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurK')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
-        }
-        if ($form->isValid()) {
-            if ($form->get('secteurL')->isClicked()) {
-                $this->addElemCart($request, $value->getId());
-            }
+            $a++;
         }
 
-        return $this->render('theBundle:Default:billeterie.html.twig', array('form' => $form->createView(), 'secteurs' => $secteurs));
+        return $this->render('theBundle:Default:billeterie.html.twig', array('secteurs' => $secteurs, 'form' => $form->createView(), 'formulaires' => $formulaires));
     }
 
     public function panierAction(Request $request) {

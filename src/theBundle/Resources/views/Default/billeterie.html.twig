@@ -4,111 +4,68 @@
     <div class="scene">
         <span class="sceneText">Scène</span>
     </div>
-    <div class="tribunes">
 
+    {#    <h2>Example of creating Modals with Twitter Bootstrap</h2>
+        <!-- Button trigger modal -->
+        <button class="btn btn-primary btn-lg" data-toggle="modal" 
+                data-target="#myModal">
+            Launch demo modal
+        </button>#}
+    <!-- exemple de popup -->
+    <div class="container">
+        <h2>Bootstrap 3 Modal Vertically Centered</h2>
+        <p class="text-info">*Works with Bootstrap 3 - 3.1.1</p>
+        <p class="lead">Vertically center your modals without declaring a <code>height</code>.<br>Modal <code>max-height</code> does not exceed window height with scrollable <code>.modal-body</code> and adapts on resize.<br>
+        </p> 
 
-        <div class="trib">
-            {#                {{ form_start(form) }}
-            
-                            {{ form_widget(form.secteurA, {'label': ('SECTEUR A' ) })  }}
-                            {{ form_widget(form.secteurB, {'label': ('SECTEUR B' ) })  }}
-                            {{ form_widget(form.secteurC, {'label': ('SECTEUR C' ) })  }}
-                            {{ form_widget(form.secteurD, {'label': ('SECTEUR D' ) })  }}
-                            {{ form_widget(form.secteurE, {'label': ('SECTEUR E' ) })  }}
-                            {{ form_widget(form.secteurF, {'label': ('SECTEUR F' ) })  }}
-                            {{ form_widget(form.secteurG, {'label': ('SECTEUR G' ) })  }}
-                            {{ form_widget(form.secteurH, {'label': ('SECTEUR H' ) })  }}
-                            {{ form_widget(form.secteurI, {'label': ('SECTEUR I' ) })  }}
-                            {{ form_widget(form.secteurJ, {'label': ('SECTEUR J' ) })  }}
-                            {{ form_widget(form.secteurK, {'label': ('SECTEUR K' ) })  }}
-                            {{ form_widget(form.secteurL, {'label': ('SECTEUR L' ) })  }}
-            
-                            {{ form_end(form) }} #}
+        <!-- Button trigger modal -->
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Short modal 
+        </button>
 
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru A
+        <div class="tribunes">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad sed dolores iusto ab vero tempora in earum accusantium quas iure repellendus fugit ipsa reiciendis. Id illo natus sequi ex eveniet!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            {% for nam, secteur in secteurs %}
+
+                <button type="button" class="secteur col-md-4" title="<h2>Secteur {{secteur.secteurs}}</h2>"  
+                        data-container="body" data-toggle="modal" data-target="#myModal" data-placement="top" 
+                        data-content='{{ form_start(formulaires[nam+1]) }}
+                        {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs) })}}
+                        {{ form_end(formulaires[nam+1]) }} '>
+
+                    Secteur {{secteur.secteurs}}
                 </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru B                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru C
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru D
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru E
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru F
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru G
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru H
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru I
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru J
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru K
-                </button>
-                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
-                        data-container="body" data-toggle="popover" data-placement="top" 
-                        data-content="asdfsdfsadfsdfsdf
-                        <form><input type='submit'></form> ">
-                    Secteru L
-                </button>
+
+            {% endfor %}
 
 
 
         </div>
+        <div class="prixSecteur">
+            <h2 >Prix des différents secteurs:</h2>
+            {% for nam, secteur in secteurs %}
 
-    </div>
-    <div class="prixSecteur">
-        <h2 >Prix des différents secteurs:</h2>
-        {% for nam, secteur in secteurs %}
+                <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}} CHF<br />
 
-            <b>SECTEUR:</b> {{secteur.secteurs}}: {{secteur.prix}} CHF<br />
+            {% endfor %}
+        </div>
+    {% endblock %}
 
-        {% endfor %}
-    </div>
 
-{% endblock %}
