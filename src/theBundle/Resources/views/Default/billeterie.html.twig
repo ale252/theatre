@@ -5,22 +5,102 @@
         <span class="sceneText">Scène</span>
     </div>
     <div class="tribunes">
-        {% for nam, secteur in secteurs %}
 
-            <div class="trib">
-                {{ form_start(formulaires[nam+1]) }}
 
-                {{ form_widget(formulaires[nam+1].add, {'label': ('SECTEUR '~secteur.secteurs) })}}
+        <div class="trib">
+            {#                {{ form_start(form) }}
+            
+                            {{ form_widget(form.secteurA, {'label': ('SECTEUR A' ) })  }}
+                            {{ form_widget(form.secteurB, {'label': ('SECTEUR B' ) })  }}
+                            {{ form_widget(form.secteurC, {'label': ('SECTEUR C' ) })  }}
+                            {{ form_widget(form.secteurD, {'label': ('SECTEUR D' ) })  }}
+                            {{ form_widget(form.secteurE, {'label': ('SECTEUR E' ) })  }}
+                            {{ form_widget(form.secteurF, {'label': ('SECTEUR F' ) })  }}
+                            {{ form_widget(form.secteurG, {'label': ('SECTEUR G' ) })  }}
+                            {{ form_widget(form.secteurH, {'label': ('SECTEUR H' ) })  }}
+                            {{ form_widget(form.secteurI, {'label': ('SECTEUR I' ) })  }}
+                            {{ form_widget(form.secteurJ, {'label': ('SECTEUR J' ) })  }}
+                            {{ form_widget(form.secteurK, {'label': ('SECTEUR K' ) })  }}
+                            {{ form_widget(form.secteurL, {'label': ('SECTEUR L' ) })  }}
+            
+                            {{ form_end(form) }} #}
 
-                {{ form_end(formulaires[nam+1]) }} 
-                <div class="info-bulle">
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru A
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru B                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru C
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru D
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru E
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru F
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru G
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru H
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru I
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru J
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru K
+                </button>
+                <button type="button" class="secteur" title="<h2>Secteur A</h2>"  
+                        data-container="body" data-toggle="popover" data-placement="top" 
+                        data-content="asdfsdfsadfsdfsdf
+                        <form><input type='submit'></form> ">
+                    Secteru L
+                </button>
 
-                    <p>Info about products</p>
 
-                </div>
-            </div>
 
-        {% endfor %}
+        </div>
+
     </div>
     <div class="prixSecteur">
         <h2 >Prix des différents secteurs:</h2>

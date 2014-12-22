@@ -17,17 +17,18 @@
         <script src="{{ asset('bundles/theatre/js/skel.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/skel-layers.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/init.js') }}"></script>
-        
+        <script src="{{ asset('bundles/theatre/js/bootstrap.min.js') }}"></script>
+
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-        
-        
+
+
         <noscript>
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/skel.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-desktop.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-wide.css') }}" />
         </noscript>
-        
+
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/css.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/reservation.css') }}" />
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('bundles/theatre/css/ie/v8.css') }}" /><![endif]-->
@@ -62,6 +63,12 @@
             $(function () {
                 $("#form_date").datepicker({
                     dateFormat: "dd-mm-yy"})
+            });
+        </script>
+        <script>
+            $(function ()
+            {
+                $("[data-toggle='popover']").popover({html : true });
             });
         </script>
     </head>
