@@ -77,21 +77,22 @@ class DefaultController extends Controller {
     }
 
     public function totalCart($request) {
-//        $session = $request->getSession();
-//        $r = $session->get('panier');
-//        $total = 0;
-//        $repository = $this
-//                ->getDoctrine()
-//                ->getManager()
-//                ->getRepository('theBundle:places');
-//        foreach ($r as $key => $produit) {
-//            $product_id = $key;
-//            $prix = $repository->find($product_id)->getPrix();
-//            $quantite = $produit;
-//            $total = $total + ($prix * $quantite);
-//        }
-//
-//        return $total;
+        $session = $request->getSession();
+        $r = $session->get('panier');
+        $total = 0;
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:Secteurs');
+
+        foreach ($r as $key => $produit) {
+            $product_id = $key;
+            $prix = $repository->findBySecteurs($product_id)[0]->getPrix();
+            $quantite = $produit;
+            $total = $total + ($prix * $quantite);
+        }
+
+        return $total;
     }
 
     public function billeterieAction(Request $request, $numPlace) {
@@ -111,13 +112,13 @@ class DefaultController extends Controller {
                 if ($form->get('ajouterCont')->isClicked()) {
                     $quantite = $form->getData()['quant'];
                     for ($i = 1; $i <= $quantite; $i++) {
-                        $this->addElemCart($request, $value->getId());
+                        $this->addElemCart($request, $value->getSecteurs());
                     }
                 }
                 if ($form->get('ajouterRest')->isClicked()) {
                     $quantite = $form->getData()['quant'];
                     for ($i = 1; $i <= $quantite; $i++) {
-                        $this->addElemCart($request, $value->getId());
+                        $this->addElemCart($request, $value->getSecteurs());
                     }
                     return $this->redirect($this->generateUrl('theatre_panier'));
                 }
@@ -129,36 +130,54 @@ class DefaultController extends Controller {
     }
 
     public function panierAction(Request $request) {
+
         $session = $request->getSession();
+//        var_dump($session->get('panier'));
+//        exit;
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:places');
+        $places = $repository->findAll();
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('theBundle:Secteurs');
         $secteurs = $repository->findAll();
         $total = $this->totalCart($request);
+//        $total = $this->removeAllCart($request);
         $panier = $session->get('panier');
         $formulaires;
-        $a = 0;
+
         foreach ($secteurs as $value) {
             $form = $this->createForm(new CartType($value->getPrix()));
-            $formulaires[$value->getId()] = $form->createView();
+            $formulaires[$value->getSecteurs()] = $form->createView();
             $form->handleRequest($request);
 
             if ($form->isValid()) {
                 if ($form->get('plus')->isClicked()) {
-                    $this->addElemCart($request, $value->getId());
-                    return $this->redirect($this->generateUrl('theatre_panier'));
+                    if ($_POST['secteur'] == $value->getSecteurs()) {
+                        $this->addElemCart($request, $value->getSecteurs());
+                        return $this->redirect($this->generateUrl('theatre_panier'));
+                    }
                 }
                 if ($form->get('moins')->isClicked()) {
-                    $this->minusElemCart($request, $value->getId());
-                    return $this->redirect($this->generateUrl('theatre_panier'));
+                    if ($_POST['secteur'] == $value->getSecteurs()) {
+                        $this->minusElemCart($request, $value->getSecteurs());
+                        return $this->redirect($this->generateUrl('theatre_panier'));
+                    }
+                }
+                if ($form->get('effacer')->isClicked()) {
+                    if ($_POST['secteur'] == $value->getSecteurs()) {
+                        $this->removeElemCart($request, $value->getSecteurs());
+                        return $this->redirect($this->generateUrl('theatre_panier'));
+                    }
                 }
             }
-            $a++;
         }
 
 
-        return $this->render('theBundle:Default:panier.html.twig', array('secteurs' => $secteurs, 'panier' => $panier, 'total' => $total, 'form' => $form->createView(), 'formulaires' => $formulaires));
+        return $this->render('theBundle:Default:panier.html.twig', array('secteurs' => $secteurs, 'places' => $places, 'panier' => $panier, 'total' => $total, 'form' => $form->createView(), 'formulaires' => $formulaires));
     }
 
 }

@@ -4,7 +4,14 @@
     <div class="scene">
         <span class="sceneText">Scène</span>
     </div>
+{#<img id="Image-Maps-Com-image-maps-2014-12-23-195728" src="http://www.image-maps.com/m/private/0/0lhv9qmg5dta92sp2hso9m79r0_tribune.jpg" border="0" width="650" height="464" orgWidth="650" orgHeight="464" usemap="#image-maps-2014-12-23-195728" alt="" />
+<map name="image-maps-2014-12-23-195728" id="ImageMapsCom-image-maps-2014-12-23-195728">
+<area shape="rect" coords="648,462,650,464" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+<area  alt="" title="" href="http://www.image-maps.com/secteurA" shape="poly" coords="263,67,389,80,320,173,200,161" style="outline:none;" target="_self"     />
+<area  alt="" title="" href="http://www.image-maps.com/SecteurB" shape="poly" coords="384,79,512,91,445,183,319,173" style="outline:none;" target="_self"     />
+</map>
 
+#}
     <!-- Modal -->
 
     <div class="tribunes">
@@ -26,8 +33,8 @@
                             
                         </div>
                         <div class="modal-footer">
-                            {{ form_widget(formulaires[nam+1].ajouterCont, {'label': "Ajouter au panier et continuer les achats"}) }}
-                            {{ form_widget(formulaires[nam+1].ajouterRest, {'label': "Ajouter au panier et passer commande"}) }}
+                            {{ form_widget(formulaires[nam+1].ajouterCont, {'label': "Ajouter et continuer les achats"}) }}
+                            {{ form_widget(formulaires[nam+1].ajouterRest, {'label': "Ajouter et passer commande"}) }}
                             {{ form_end(formulaires[nam+1]) }} 
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
                         </div>
@@ -35,7 +42,7 @@
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             
-            <button type="button" class="secteur col-md-4" title="<h2>Secteur {{secteur.secteurs}}</h2>"  
+            <button type="button" class="secteur col-md-4 gris " title="<h2>Secteur {{secteur.secteurs}}</h2>"  
                     data-container="body" data-toggle="modal" data-target="#myModal{{secteur.secteurs}}" data-placement="top" 
                     >
                 Secteur {{secteur.secteurs}}

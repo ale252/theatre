@@ -1,56 +1,62 @@
 {% extends "::base.html.twig" %}
 {% block content %}
 
-    <h2>Le billets seront en vente tout prochainement!!</h2>
-    <table>
+    <h1>Voici votre panier d'achat</h1>
+    <table class="cart">
         <tr>
             <th class="headTable">Places</th>
             <th class="headTable">Prix</th>
             <th class="headTable">Quantité</th>
             <th class="headTable">Action</th>
         </tr>
-        {#{% for nam, secteur in secteurs %}
-            {{ form_start(formulaires[nam+1]) }}
-            {{ form_errors(formulaires[nam+1]) }}
-            <tr>
 
-                <td class="col-md-3"><span>{{ form_widget(formulaires[nam+1].effacer, {'label': "X"}) }}Secteur: {{secteur.secteurs}}</span></td>
-                <td class="col-md-2"> <span>{{secteur.prix}}</span></td>
-                <td class="col-md-2"><span>{{quantite}}</span></td>
-                <td>
-
-
-                    {{ form_widget(formulaires[nam+1].plus, {'label': "+"}) }}
-                    {{ form_widget(formulaires[nam+1].moins, {'label': "-"}) }}
-
-                </td>
-                {{ form_end(formulaires[nam+1]) }} 
-            </tr>
-
-        {% endfor %}#}
-        {% for place, quantite in secteurs %}
-            {% for key,num in formulaires %}
-
-                {% if key == place %}
-                    {{ form_start(num) }}
-                    {{ form_errors(num) }}
+        {% for secteur, quantite in panier %}
+            {% for formulaireId , form in formulaires %}
+                {% if formulaireId == secteur %}
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
                     <tr>
-
-                        <td class="col-md-3"><span>{{ form_widget(num.effacer, {'label': "X"}) }}Secteur: {{place}}</span></td>
-                        <td class="col-md-2"> <span>{{secteurs[place-1].prix}}</span></td>
-{#                        <td class="col-md-2"><span>{{quantite}}</span></td>#}
+                        <td class="col-md-3"><span>{{ form_widget(form.effacer, {'label': "X"}) }}Secteur {{secteur}}</span></td>
+                        {% for secteurId, secteur1 in secteurs %}
+                            {% if secteur1.secteurs == secteur %}
+                                <td class="col-md-2"> <span>{{secteur1.prix}} CHF</span></td>
+                            {% endif %}
+                        {% endfor %}
+                        <td class="col-md-2"><span>{{quantite}}</span></td>
                         <td>
-
-
-                            {{ form_widget(num.plus, {'label': "+"}) }}
-                            {{ form_widget(num.moins, {'label': "-"}) }}
-
+                            {{ form_widget(formulaires[formulaireId].plus, {'label': "+"}) }}
+                            {{ form_widget(formulaires[formulaireId].moins, {'label': "-"}) }}
+                            <input type="hidden" name="secteur" value="{{secteur}}" />
                         </td>
-                        {{ form_end(num) }} 
                     </tr>
+                    {{ form_end(form) }} 
                 {% endif %}
             {% endfor %}
         {% endfor %}
+        {#{% for place, quantite in panier %}
+
+
+            {% if key == place %}
+                {{ form_start(num) }}
+                {{ form_errors(num) }}
+                <tr>
+
+                    <td class="col-md-3"><span>{{ form_widget(num.effacer, {'label': "X"}) }}Siège: {{place}}</span></td>
+                    <td class="col-md-2"> <span>{{places[place-1].prix}}</span></td>
+                    <td class="col-md-2"><span>{{quantite}}</span></td>
+                    <td>
+
+
+                        {{ form_widget(num.plus, {'label': "+"}) }}
+                        {{ form_widget(num.moins, {'label': "-"}) }}
+
+                    </td>
+                    {{ form_end(num) }} 
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+        {% endfor %}#}
     </table>
     {#    {% for nam, prix in places %}
     
@@ -67,5 +73,5 @@
                 {% endif %}
             {% endfor %}
         {% endfor %}#}
-    <span class="col-md-2">Total:{{total}}</span>
+    <span class="col-md-6 col-md-offset-6 totalCart">Total:  {{total}} CHF</span>
 {% endblock %}
