@@ -126,7 +126,7 @@ class DefaultController extends Controller {
             $a++;
         }
 
-        return $this->render('theBundle:Default:billeterie.html.twig', array('secteurs' => $secteurs, 'form' => $form->createView(), 'formulaires' => $formulaires));
+        return $this->render('theBundle:Default:billeterie.html.twig', array('secteurs' => $secteurs,  'formulaires' => $formulaires));
     }
 
     public function panierAction(Request $request) {

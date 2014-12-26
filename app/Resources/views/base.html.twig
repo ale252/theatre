@@ -63,10 +63,11 @@
                     dateFormat: "dd-mm-yy"})
             });
         </script>
-        <script>$(this).on('click', function () {
+        <script>
+            {#$(this).on('click', function () {
             $('.gris').css("background-color","rgba(0,0,0,0.1)");
-{#                $('#grise').chiaddClass('griser');#}
-            })
+{#                $('#grise').chiaddClass('griser');
+            })#}
 
         </script>
     </head>
@@ -75,7 +76,6 @@
             Set it to "right-sidebar" to, you guessed it, position it on the right.
     -->
     <body class="left-sidebar">
-        <div class="gris" id="grise">fhgfd
             <!-- Wrapper -->
             <div id="wrapper">
 
@@ -215,6 +215,5 @@
                 </div>
 
             </div>
-        </div>
     </body>
 </html>
