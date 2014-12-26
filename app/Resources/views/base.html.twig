@@ -33,6 +33,8 @@
 
         <script src="{{ asset('bundles/theatre/langs/fr_FR.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ asset('bundles/theatre/js/jquery.rwdImageMaps.js') }}"></script>
+        <script src="{{ asset('bundles/theatre/js/jquery.maphilight.js') }}"></script>
         <script>
             tinymce.init({
                 selector: "textarea",
@@ -54,21 +56,25 @@
                     {title: 'Table styles'},
                     {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
                 ]
-            });
-        </script>
+            });</script>
         <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
         <script>
             $(function () {
                 $("#form_date").datepicker({
                     dateFormat: "dd-mm-yy"})
+            });</script>
+        <script>
+            $(document).ready(function (e) {
+                $('img[usemap]').rwdImageMaps();
             });
         </script>
         <script>
-            {#$(this).on('click', function () {
-            $('.gris').css("background-color","rgba(0,0,0,0.1)");
-{#                $('#grise').chiaddClass('griser');
-            })#}
-
+            $(function () {
+                $('.map').maphilight({
+                    fillOpacity: 0.5,
+                    stroke: false
+                });
+            });
         </script>
     </head>
     <!--
@@ -76,144 +82,144 @@
             Set it to "right-sidebar" to, you guessed it, position it on the right.
     -->
     <body class="left-sidebar">
-            <!-- Wrapper -->
-            <div id="wrapper">
+        <!-- Wrapper -->
+        <div id="wrapper">
 
-                <!-- Content -->
-                <div id="content" class="gris"  >
-                    <div class="inner">
-                        <h2 class="titre1"><span><font size="+3">Création 2017: La Grèce antique conte la Grèce moderne, l'Europe.</font></span></h2>
-                        <div class="titre11">
-                            {% block content %}
-                            {% endblock %}
-                        </div>
-                        <!-- Pagination -->
-
-                        {% block pagination %}
+            <!-- Content -->
+            <div id="content" class="gris"  >
+                <div class="inner">
+                    <h2 class="titre1"><span><font size="+3">Création 2017: La Grèce antique conte la Grèce moderne, l'Europe.</font></span></h2>
+                    <div class="titre11">
+                        {% block content %}
                         {% endblock %}
-
-
                     </div>
-                </div>
+                    <!-- Pagination -->
 
-                <!-- Sidebar -->
-                <div id="sidebar" class="gris">
-
-                    <!-- Logo -->
-                    <h1 id="logo"><a href="#">Théâtre</a></h1>
-
-                    <!-- Nav -->
-                    {{ render(controller('theBundle:Default:menu')) }}
-
-                    {#
-                                                                    <!-- Search -->
-                                                                            <section class="box search">
-                                                                                    <form method="post" action="#">
-                                                                                            <input type="text" class="text" name="search" placeholder="Search" />
-                                                                                    </form>
-                                                                            </section>
-                                                            
-                                                                    <!-- Text -->
-                                                                            <section class="box text-style1">
-                                                                                    <div class="inner">
-                                                                                            <p>
-                                                                                                    <strong>Striped:</strong> A free and fully responsive HTML5 site
-                                                                                                    template designed by <a href="http://n33.co/">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a>
-                                                                                            </p>
-                                                                                    </div>
-                                                                            </section>
-                                                            
-                                                                    <!-- Recent Posts -->
-                                                                            <section class="box recent-posts">
-                                                                                    <header>
-                                                                                            <h2>Recent Posts</h2>
-                                                                                    </header>
-                                                                                    <ul>
-                                                                                            <li><a href="#">Lorem ipsum dolor</a></li>
-                                                                                            <li><a href="#">Feugiat nisl aliquam</a></li>
-                                                                                            <li><a href="#">Sed dolore magna</a></li>
-                                                                                            <li><a href="#">Malesuada commodo</a></li>
-                                                                                            <li><a href="#">Ipsum metus nullam</a></li>
-                                                                                    </ul>
-                                                                            </section>
-                                                            
-                                                                    <!-- Recent Comments -->
-                                                                            <section class="box recent-comments">
-                                                                                    <header>
-                                                                                            <h2>Recent Comments</h2>
-                                                                                    </header>
-                                                                                    <ul>
-                                                                                            <li>case on <a href="#">Lorem ipsum dolor</a></li>
-                                                                                            <li>molly on <a href="#">Sed dolore magna</a></li>
-                                                                                            <li>case on <a href="#">Sed dolore magna</a></li>
-                                                                                    </ul>
-                                                                            </section>#}
-
-                    {#					<!-- Calendar -->
-                                                                    <section class="box calendar">
-                                                                            <div class="inner">
-                                                                                    <table>
-                                                                                            <caption>July 2014</caption>
-                                                                                            <thead>
-                                                                                                    <tr>
-                                                                                                            <th scope="col" title="Monday">M</th>
-                                                                                                            <th scope="col" title="Tuesday">T</th>
-                                                                                                            <th scope="col" title="Wednesday">W</th>
-                                                                                                            <th scope="col" title="Thursday">T</th>
-                                                                                                            <th scope="col" title="Friday">F</th>
-                                                                                                            <th scope="col" title="Saturday">S</th>
-                                                                                                            <th scope="col" title="Sunday">S</th>
-                                                                                                    </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                    <tr>
-                                                                                                            <td colspan="4" class="pad"><span>&nbsp;</span></td>
-                                                                                                            <td><span>1</span></td>
-                                                                                                            <td><span>2</span></td>
-                                                                                                            <td><span>3</span></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                            <td><span>4</span></td>
-                                                                                                            <td><span>5</span></td>
-                                                                                                            <td><a href="#">6</a></td>
-                                                                                                            <td><span>7</span></td>
-                                                                                                            <td><span>8</span></td>
-                                                                                                            <td><span>9</span></td>
-                                                                                                            <td><a href="#">10</a></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                            <td><span>11</span></td>
-                                                                                                            <td><span>12</span></td>
-                                                                                                            <td><span>13</span></td>
-                                                                                                            <td class="today"><a href="#">14</a></td>
-                                                                                                            <td><span>15</span></td>
-                                                                                                            <td><span>16</span></td>
-                                                                                                            <td><span>17</span></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                            <td><span>18</span></td>
-                                                                                                            <td><span>19</span></td>
-                                                                                                            <td><span>20</span></td>
-                                                                                                            <td><span>21</span></td>
-                                                                                                            <td><span>22</span></td>
-                                                                                                            <td><a href="#">23</a></td>
-                                                                                                            <td><span>24</span></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                            <td><a href="#">25</a></td>
-                                                                                                            <td><span>26</span></td>
-                                                                                                            <td><span>27</span></td>
-                                                                                                            <td><span>28</span></td>
-                                                                                                            <td class="pad" colspan="3"><span>&nbsp;</span></td>
-                                                                                                    </tr>
-                                                                                            </tbody>
-                                                                                    </table>
-                                                                            </div>
-                                                                    </section>#}
+                    {% block pagination %}
+                    {% endblock %}
 
 
                 </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div id="sidebar" class="gris">
+
+                <!-- Logo -->
+                <h1 id="logo"><a href="#">Théâtre</a></h1>
+
+                <!-- Nav -->
+                {{ render(controller('theBundle:Default:menu')) }}
+
+                {#
+                                                                <!-- Search -->
+                                                                        <section class="box search">
+                                                                                <form method="post" action="#">
+                                                                                        <input type="text" class="text" name="search" placeholder="Search" />
+                                                                                </form>
+                                                                        </section>
+                                                        
+                                                                <!-- Text -->
+                                                                        <section class="box text-style1">
+                                                                                <div class="inner">
+                                                                                        <p>
+                                                                                                <strong>Striped:</strong> A free and fully responsive HTML5 site
+                                                                                                template designed by <a href="http://n33.co/">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a>
+                                                                                        </p>
+                                                                                </div>
+                                                                        </section>
+                                                        
+                                                                <!-- Recent Posts -->
+                                                                        <section class="box recent-posts">
+                                                                                <header>
+                                                                                        <h2>Recent Posts</h2>
+                                                                                </header>
+                                                                                <ul>
+                                                                                        <li><a href="#">Lorem ipsum dolor</a></li>
+                                                                                        <li><a href="#">Feugiat nisl aliquam</a></li>
+                                                                                        <li><a href="#">Sed dolore magna</a></li>
+                                                                                        <li><a href="#">Malesuada commodo</a></li>
+                                                                                        <li><a href="#">Ipsum metus nullam</a></li>
+                                                                                </ul>
+                                                                        </section>
+                                                        
+                                                                <!-- Recent Comments -->
+                                                                        <section class="box recent-comments">
+                                                                                <header>
+                                                                                        <h2>Recent Comments</h2>
+                                                                                </header>
+                                                                                <ul>
+                                                                                        <li>case on <a href="#">Lorem ipsum dolor</a></li>
+                                                                                        <li>molly on <a href="#">Sed dolore magna</a></li>
+                                                                                        <li>case on <a href="#">Sed dolore magna</a></li>
+                                                                                </ul>
+                                                                        </section>#}
+
+                {#					<!-- Calendar -->
+                                                                <section class="box calendar">
+                                                                        <div class="inner">
+                                                                                <table>
+                                                                                        <caption>July 2014</caption>
+                                                                                        <thead>
+                                                                                                <tr>
+                                                                                                        <th scope="col" title="Monday">M</th>
+                                                                                                        <th scope="col" title="Tuesday">T</th>
+                                                                                                        <th scope="col" title="Wednesday">W</th>
+                                                                                                        <th scope="col" title="Thursday">T</th>
+                                                                                                        <th scope="col" title="Friday">F</th>
+                                                                                                        <th scope="col" title="Saturday">S</th>
+                                                                                                        <th scope="col" title="Sunday">S</th>
+                                                                                                </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                                <tr>
+                                                                                                        <td colspan="4" class="pad"><span>&nbsp;</span></td>
+                                                                                                        <td><span>1</span></td>
+                                                                                                        <td><span>2</span></td>
+                                                                                                        <td><span>3</span></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                        <td><span>4</span></td>
+                                                                                                        <td><span>5</span></td>
+                                                                                                        <td><a href="#">6</a></td>
+                                                                                                        <td><span>7</span></td>
+                                                                                                        <td><span>8</span></td>
+                                                                                                        <td><span>9</span></td>
+                                                                                                        <td><a href="#">10</a></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                        <td><span>11</span></td>
+                                                                                                        <td><span>12</span></td>
+                                                                                                        <td><span>13</span></td>
+                                                                                                        <td class="today"><a href="#">14</a></td>
+                                                                                                        <td><span>15</span></td>
+                                                                                                        <td><span>16</span></td>
+                                                                                                        <td><span>17</span></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                        <td><span>18</span></td>
+                                                                                                        <td><span>19</span></td>
+                                                                                                        <td><span>20</span></td>
+                                                                                                        <td><span>21</span></td>
+                                                                                                        <td><span>22</span></td>
+                                                                                                        <td><a href="#">23</a></td>
+                                                                                                        <td><span>24</span></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                        <td><a href="#">25</a></td>
+                                                                                                        <td><span>26</span></td>
+                                                                                                        <td><span>27</span></td>
+                                                                                                        <td><span>28</span></td>
+                                                                                                        <td class="pad" colspan="3"><span>&nbsp;</span></td>
+                                                                                                </tr>
+                                                                                        </tbody>
+                                                                                </table>
+                                                                        </div>
+                                                                </section>#}
+
 
             </div>
+
+        </div>
     </body>
 </html>
