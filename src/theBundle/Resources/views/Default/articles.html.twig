@@ -1,8 +1,10 @@
 
 {% extends "::base.html.twig" %}
 {% block content %}
-    <a href="{{ path('theatre_ajouteArticle') }}"><span class="iconAdd glyphicon glyphicon-plus-sign"></span></a>
-    {% for article in articles %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('theatre_ajouteArticle') }}"><span class="iconAdd glyphicon glyphicon-plus-sign"></span></a>
+        {% endif %}
+        {% for article in articles %}
         <article class="box post post-excerpt">
             <header>
 
@@ -47,11 +49,12 @@
                     <li><a href="#" class="icon fa-facebook">128</a></li>
                 </ul>#}
             </div>
-{#            <a href="#" class="image featured"><img src="{{ asset('bundles/theatre/images/pic01.jpg') }}" alt="" /></a>#}
-                {{article.contenu|raw}}
+            {#            <a href="#" class="image featured"><img src="{{ asset('bundles/theatre/images/pic01.jpg') }}" alt="" /></a>#}
+            {{article.contenu|raw}}
         </article>
-        <div class=" col-md-12 icon3"><a href="{{ path('theatre_modifierArticle', {'id': article.id}) }}"><span class="glyphicon glyphicon-pencil icon1"></span></a><a href="{{ path('theatre_effacerArticle', {'id': article.id}) }}"><span class="glyphicon glyphicon-remove-circle icon2"></span></a></div>
-
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class=" col-md-12 icon3"><a href="{{ path('theatre_modifierArticle', {'id': article.id}) }}"><span class="glyphicon glyphicon-pencil icon1"></span></a><a href="{{ path('theatre_effacerArticle', {'id': article.id}) }}"><span class="glyphicon glyphicon-remove-circle icon2"></span></a></div>
+                {% endif %}
         <hr class="separation" />
     {% endfor %}
 
