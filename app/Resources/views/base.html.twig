@@ -5,84 +5,36 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
+        <!-- Les CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <!--[if lte IE 8]><script src="{{ asset('bundles/theatre/css/ie/html5shiv.js') }}"></script><![endif]-->
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="{{ asset('bundles/theatre/js/skel.min.js') }}"></script>
-        <script src="{{ asset('bundles/theatre/js/skel-layers.min.js') }}"></script>
-        <script src="{{ asset('bundles/theatre/js/init.js') }}"></script>
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/css.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/reservation.css') }}" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('bundles/theatre/css/ie/v8.css') }}" /><![endif]-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
-
         <noscript>
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/skel.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-desktop.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-wide.css') }}" />
         </noscript>
-
-        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/css.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/reservation.css') }}" />
-        <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('bundles/theatre/css/ie/v8.css') }}" /><![endif]-->
-
+        
+        
+        <!-- Les scripts -->
+        <!--[if lte IE 8]><script src="{{ asset('bundles/theatre/css/ie/html5shiv.js') }}"></script><![endif]-->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="{{ asset('bundles/theatre/js/skel.min.js') }}"></script>
+        <script src="{{ asset('bundles/theatre/js/skel-layers.min.js') }}"></script>
+        <script src="{{ asset('bundles/theatre/js/init.js') }}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
         <script src="{{ asset('bundles/theatre/langs/fr_FR.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/tinymce/tinymce.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/jquery.rwdImageMaps.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/jquery.maphilight.js') }}"></script>
-        <script>
-            tinymce.init({
-                selector: "textarea",
-                theme: "modern",
-                language: 'fr_FR',
-                plugins: [
-                    "advlist textcolor autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                    "save table contextmenu directionality emoticons template paste jbimages"
-                ],
-                content_css: "css/content.css",
-                toolbar: "styleselect | bold italic fontselect |  fontsizeselect | forecolor backcolor emoticons | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink | insertfile jbimages",
-                style_formats: [
-                    {title: 'Bold text', inline: 'b'},
-                    {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-                    {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-                    {title: 'Example 1', inline: 'span', classes: 'example1'},
-                    {title: 'Example 2', inline: 'span', classes: 'example2'},
-                    {title: 'Table styles'},
-                    {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
-                ]
-            });</script>
-        
-        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-        <script>
-            $(function () {
-                $("#form_date").datepicker({
-                    dateFormat: "dd-mm-yy"})
-            });</script>
-        <script>
-            $(document).ready(function (e) {
-                $('img[usemap]').rwdImageMaps();
-            });
-        </script>
-        <script>
-{#            $(function () {
-                $('.map').maphilight({
-                    fillOpacity: 0.5,
-                    stroke: false
-                });
-            });#}
-        </script>
-        
-        
-{#        <script>
-            $(function () {
-                var options = {
-                    backdrop: false
-                }
-                $('#basicModal').modal(options);
-            })
-        </script>#}
+        <script src="{{ asset('bundles/theatre/js/demarrage/tiny.js') }}"></script>
+        <script src="{{ asset('bundles/theatre/js/demarrage1/datePicker.js') }}"></script>
+        <script src="{{ asset('bundles/theatre/js/demarrage1/mapResponsive.js') }}"></script>
+
     </head>
     <!--
             Note: Set the body element's class to "left-sidebar" to position the sidebar on the left.
