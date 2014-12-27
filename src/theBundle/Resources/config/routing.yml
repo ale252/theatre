@@ -28,3 +28,6 @@ theatre_billeterie:
 theatre_panier:
     path:     /panier
     defaults: { _controller: theBundle:Default:panier }
+theatre_interesse:
+    path:     /interesse
+    defaults: { _controller: theBundle:Default:interesse }

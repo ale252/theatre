@@ -15,6 +15,9 @@ class DefaultController extends Controller {
     public function indexAction() {
         return $this->render('theBundle:Default:index.html.twig');
     }
+    public function interesseAction() {
+        return $this->render('theBundle:Default:interesse.html.twig');
+    }
 
     public function articlesAction(Request $request) {
 //        $session = $request->getSession();
