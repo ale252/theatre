@@ -11,4 +11,3 @@ services:
         class: UserBundle\Form\Type\RegistrationFormType
         tags:
             - { name: form.type, alias: acme_user_registration }
-#

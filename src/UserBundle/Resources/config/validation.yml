@@ -23,4 +23,4 @@ UserBundle\Entity\User:
                 max: 255
                 maxMessage: "Le mot de passe ne doit pas dépasser les 255 caractères"
             - NotBlank:
-                message: "Veuillez entrer un mot de passe."
+                message: "Veuillez entrer un mot de passe"
