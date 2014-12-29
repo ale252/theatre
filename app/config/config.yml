@@ -30,6 +30,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        fos_csrf_provider: "@form.csrf_provider"
 
 # Assetic Configuration
 assetic:
@@ -80,3 +82,6 @@ fos_user:
     db_driver: orm 
     firewall_name: main
     user_class: UserBundle\Entity\User
+    registration:
+        form:
+            type: acme_user_registration

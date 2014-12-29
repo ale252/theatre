@@ -1,0 +1,26 @@
+UserBundle\Entity\User:
+    properties:
+        email:
+            - Length:
+                min: 5
+                minMessage: "L'adresse e-mail doit contenir au moins {{ limit }} caractères"
+                max: 255
+                maxMessage: "Votre adresse email ne doit pas dépasser les 255 caractères"
+            - NotBlank:
+                message: "Veuillez entrer une adresse mail."
+        username:
+            - Length:
+                min: 6
+                minMessage: "Le nom d'utilisateur doit contenir au moins {{ limit }} caractères"
+                max: 255
+                maxMessage: "Le nom d'utilisateur ne doit pas dépasser les 255 caractères"
+            - NotBlank:
+                message: "Veuillez entrer un nom d'utilisateur."
+        plainPassword:
+            - Length:
+                min: 8
+                minMessage: "Le mot de passe doit contenir au moins {{ limit }} caractères"
+                max: 255
+                maxMessage: "Le mot de passe ne doit pas dépasser les 255 caractères"
+            - NotBlank:
+                message: "Veuillez entrer un mot de passe."

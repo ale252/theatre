@@ -1,6 +1,6 @@
 theatre_homepage:
     path:     /
-    defaults: { _controller: theBundle:Default:index }
+    defaults: { _controller: theBundle:Default:articles }
 
 theatre_articles:
     path:     /articles
@@ -31,3 +31,6 @@ theatre_panier:
 theatre_interesse:
     path:     /interesse
     defaults: { _controller: theBundle:Default:interesse }
+user_edit_profil:
+    resource: @FOSUserBundle/Resources/config/routing/profile.xml
+    prefix: /profile 
