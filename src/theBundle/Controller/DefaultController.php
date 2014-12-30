@@ -33,6 +33,17 @@ class DefaultController extends Controller {
 
         return $this->render('theBundle:Default:articles.html.twig', array('articles' => $articles));
     }
+    public function zeusAction(Request $request) {
+//        $session = $request->getSession();
+//        $test = $session->get('name');
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:Zeus');
+        $articles = $repository->findAll();
+
+        return $this->render('theBundle:Default:zeus.html.twig', array('zeus' => $articles));
+    }
 
     public function menuAction() {
         return $this->render('theBundle:Default:menu.html.twig');

@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+    <div class="ajouteArticle">
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.date, {'label': "Date de l'événement: " }) }}
+        {{ form_row(form.titre, {'label': "Titre de l\'événement: " } ) }}
+        {{ form_row(form.description, {'label': 'Description courte: ' }) }}
+        {{ form_row(form.content, {'label': "Contenu de l\'article: " }) }}
+        <center><input class="bouton" type="submit" value="Enregistrer la date"/></center>
+            {{ form_end(form) }} 
+    </div>  
+{% endblock %}

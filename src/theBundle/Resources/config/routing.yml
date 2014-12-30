@@ -6,6 +6,10 @@ theatre_articles:
     path:     /articles
     defaults: { _controller: theBundle:Default:articles }
 
+theatre_zeus:
+    path:     /zeus
+    defaults: { _controller: theBundle:Default:zeus }
+
 theatre_admin:
     path:     /admin
     defaults: { _controller: theBundle:Admin:admin }
@@ -13,14 +17,24 @@ theatre_admin:
 theatre_ajouteArticle:
     path:     /ajouteArticle
     defaults: { _controller: theBundle:Admin:ajouteArticle }
+theatre_ajouteArticleZeus:
+    path:     /ajouteArticleZeus
+    defaults: { _controller: theBundle:Admin:ajouteArticleZeus }
 
 theatre_modifierArticle:
     path:     /modifierArticle/{id}
-    defaults: { _controller: theBundle:Admin:modifierArticle }
+    defaults: { _controller: theBundle:Admin:modifierArticle, id: 1 }
+theatre_modifierArticleZeus:
+    path:     /modifierArticleZeus/{id}
+    defaults: { _controller: theBundle:Admin:modifierArticleZeus, id: 1 }
     
 theatre_effacerArticle:
     path:     /effacerArticle/{id}
-    defaults: { _controller: theBundle:Admin:effacerArticle }
+    defaults: { _controller: theBundle:Admin:effacerArticle, id: 1 }
+    
+theatre_effacerArticleZeus:
+    path:     /effacerArticleZeus/{id}
+    defaults: { _controller: theBundle:Admin:effacerArticleZeus, id: 1 }
 
 theatre_billeterie:
     path:     /billeterie/{numPlace}

@@ -5,6 +5,7 @@ namespace theBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use theBundle\Entity\Article;
+use theBundle\Entity\Zeus;
 
 class AdminController extends Controller {
 
@@ -33,6 +34,27 @@ class AdminController extends Controller {
         }
         return $this->render('theBundle:Admin:effacerArticle.html.twig', array('article' => $article, 'form' => $form->createView()));
     }
+    public function effacerArticleZeusAction($id, Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $article = $this->getDoctrine()
+                ->getRepository('theBundle:Zeus')
+                ->find($id);
+        $form = $this->createFormBuilder($article)
+                ->add('oui', 'submit')
+                ->add('non', 'submit')
+                ->getForm();
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        if ($form->isValid()) {
+            if ($form->get('oui')->isClicked()) {
+                $em->remove($article);
+                
+            }
+            $em->flush();
+            return $this->redirect($this->generateUrl('theatre_zeus'));
+        }
+        return $this->render('theBundle:Admin:effacerArticleZeus.html.twig', array('article' => $article, 'form' => $form->createView()));
+    }
 
     public function modifierArticleAction($id, Request $request) {
         $article = new Article();
@@ -59,6 +81,31 @@ class AdminController extends Controller {
         return $this->render('theBundle:Admin:modifierArticle.html.twig', array(
                     'form' => $form->createView()));
     }
+    public function modifierArticleZeusAction($id, Request $request) {
+        $article = new Zeus();
+        $em = $this->getDoctrine()->getManager();
+        $article = $this->getDoctrine()
+                ->getRepository('theBundle:Zeus')
+                ->find($id);
+        $form = $this->createFormBuilder($article)
+                ->add('date', 'text')
+                ->add('titre', 'text')
+                ->add('description', 'text')
+                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '15')))
+                ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $article->setTitre($form['titre']->getData());
+            $article->setDescription($form['description']->getData());
+            $article->setDate($form['date']->getData());
+            $article->setContenu($form['contenu']->getData());
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('theatre_zeus'));
+        }
+        return $this->render('theBundle:Admin:modifierArticleZeus.html.twig', array(
+                    'form' => $form->createView()));
+    }
 
     public function ajouteArticleAction(Request $request) {
         $article = new Article();
@@ -81,6 +128,30 @@ class AdminController extends Controller {
             return $this->redirect($this->generateUrl('theatre_articles'));
         }
         return $this->render('theBundle:Admin:ajouteArticle.html.twig', array(
+                    'form' => $form->createView()
+        ));
+    }
+    public function ajouteArticleZeusAction(Request $request) {
+        $article = new Zeus();
+        $em = $this->container->get('doctrine')->getManager();
+
+        $form = $this->createFormBuilder()
+                ->add('date', 'text')
+                ->add('titre', 'text')
+                ->add('description', 'text')
+                ->add('content', 'genemu_tinymce', array('attr' => array('rows' => '15')))
+                ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $article->setTitre($form['titre']->getData());
+            $article->setDescription($form['description']->getData());
+            $article->setDate($form['date']->getData());
+            $article->setContenu($form['content']->getData());
+            $em->persist($article);
+            $em->flush();
+            return $this->redirect($this->generateUrl('theatre_zeus'));
+        }
+        return $this->render('theBundle:Admin:ajouteArticleZeus.html.twig', array(
                     'form' => $form->createView()
         ));
     }
