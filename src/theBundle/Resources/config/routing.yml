@@ -34,5 +34,5 @@ theatre_interesse:
 theatre_contact:
     path:     /contact
     defaults: { _controller: theBundle:Default:contact }
-
-
+    requirements:
+        _method:  GET|POST

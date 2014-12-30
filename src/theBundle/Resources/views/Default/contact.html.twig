@@ -5,7 +5,7 @@
         <h1>Contacter le théâtre</h1>
     </header>
 
-    <form action="{{ path('theatre_contact') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('theatre_contact') }}" method="post">
         {{ form_errors(form) }}
 
         {{ form_row(form.nom) }}

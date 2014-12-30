@@ -30,7 +30,7 @@ class contact {
         return $this->prenom;
     }
 
-    public function setPrenom($nom) {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
     }
 

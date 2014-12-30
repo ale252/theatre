@@ -142,22 +142,20 @@ class DefaultController extends Controller {
         
         
             $form->handleRequest($request);
-            
+            var_dump($form->getErrorsAsString());
             if ($form->isValid()) {
-                var_dump($form);
-            exit;
+
                 // Perform some action, such as sending an email
                 // Redirect - This is important to prevent users re-posting
                 // the form if they refresh the page
 
-//                $message = \Swift_Message::newInstance()
-//                        ->setSubject('Contact enquiry from symblog')
-//                        ->setFrom('enquiries@symblog.co.uk')
-//                        ->setTo('monterroso252@hotmail.com')
-//                        ->setBody($this->renderView('theBundle:Default:contact.txt.twig', array('contact' => $contact)));
-//                $this->get('mailer')->send($message);
-//
-//                $this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
+                $message = \Swift_Message::newInstance()
+                        ->setSubject('Contact enquiry from symblog')
+                        ->setFrom('monterroso252@hotmail.com')
+                        ->setTo('monterroso252@gmail.com')
+                        ->setBody($this->renderView('theBundle:Default:contact.txt.twig', array('contact' => $contact)));
+                $this->get('mailer')->send($message);
+
                 return $this->redirect($this->generateUrl('theatre_homepage'));
             
         }

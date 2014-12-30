@@ -14,13 +14,13 @@ class contactType extends AbstractType
         $builder->add('prenom');
         $builder->add('email', 'email');
         $builder->add('sujet');
-        $builder->add('corps', 'textarea');
+        $builder->add('corps', 'genemu_tinymce');
+        $builder->add('envo', 'submit');
+        
     }
 
     public function getName()
     {
         return 'contact';
     }
-    
-
 }

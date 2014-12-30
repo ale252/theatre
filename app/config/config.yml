@@ -15,8 +15,8 @@ framework:
     csrf_protection: ~
     validation:      
         enable_annotations: true
-        static_method: 
-            - loadValidatorMetadata
+#        static_method: 
+#            - loadValidatorMetadata
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
