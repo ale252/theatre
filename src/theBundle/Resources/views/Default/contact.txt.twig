@@ -1,7 +1,9 @@
-{# src/Blogger/BlogBundle/Resources/view/Page/contactEmail.txt.twig #}
-A contact enquiry was made by {{ contact.nom }} at {{ "now" | date("Y-m-d H:i") }}.
+Une demande de contact a été effectué via le site internet du théatre "Création 2017: la Grèce antique contre la grèce moderne, l'Europe" par {{ contact.nom }} à {{ "now" | date("d-m-Y H:i") }}.
 
-Reply-To: {{ contact.email }}
-Subject: {{ contact.sujet }}
-Body:
-{{ contact.corps }}
+
+
+Nom: {{ contact.nom }}
+Prénom: {{ contact.prenom }}
+Email: {{ contact.email }}
+Sujet: {{ contact.sujet }}
+Message: {{ contact.corps }}

@@ -153,7 +153,6 @@ class DefaultController extends Controller {
         
         
             $form->handleRequest($request);
-            var_dump($form->getErrorsAsString());
             if ($form->isValid()) {
 
                 // Perform some action, such as sending an email
@@ -161,8 +160,8 @@ class DefaultController extends Controller {
                 // the form if they refresh the page
 
                 $message = \Swift_Message::newInstance()
-                        ->setSubject('Contact enquiry from symblog')
-                        ->setFrom('monterroso252@hotmail.com')
+                        ->setSubject('Contact depuis le site internet du théâtre Création 2017')
+                        ->setFrom('contact@creation2017.ch')
                         ->setTo('monterroso252@gmail.com')
                         ->setBody($this->renderView('theBundle:Default:contact.txt.twig', array('contact' => $contact)));
                 $this->get('mailer')->send($message);
