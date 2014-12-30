@@ -135,25 +135,36 @@ class DefaultController extends Controller {
         return $this->render('theBundle:Default:billeterie.html.twig', array('secteurs' => $secteurs, 'formulaires' => $formulaires));
     }
 
-//    public function contactAction(Request $request) {
-//        $contact = new contact();
-//        $form = $this->createForm(new contactType(), $contact);
+    public function contactAction(Request $request) {
+        $contact = new contact();
+        $form = $this->createForm(new contactType(), $contact);
+
+        
+        
+            $form->handleRequest($request);
+            
+            if ($form->isValid()) {
+                var_dump($form);
+            exit;
+                // Perform some action, such as sending an email
+                // Redirect - This is important to prevent users re-posting
+                // the form if they refresh the page
+
+//                $message = \Swift_Message::newInstance()
+//                        ->setSubject('Contact enquiry from symblog')
+//                        ->setFrom('enquiries@symblog.co.uk')
+//                        ->setTo('monterroso252@hotmail.com')
+//                        ->setBody($this->renderView('theBundle:Default:contact.txt.twig', array('contact' => $contact)));
+//                $this->get('mailer')->send($message);
 //
-//        $request = $this->getRequest();
-//        if ($request->getMethod() == 'POST') {
-//            $form->bindRequest($request);
-//
-//            if ($form->isValid()) {
-//                // Perform some action, such as sending an email
-//                // Redirect - This is important to prevent users re-posting
-//                // the form if they refresh the page
-//                return $this->redirect($this->generateUrl('theatre_homepage'));
-//            }
-//        }
-//
-//
-//        return $this->render('theBundle:Default:contact.html.twig', array('form' => $form->createView()));
-//    }
+//                $this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
+                return $this->redirect($this->generateUrl('theatre_homepage'));
+            
+        }
+
+
+        return $this->render('theBundle:Default:contact.html.twig', array('form' => $form->createView()));
+    }
 
     public function panierAction(Request $request) {
 

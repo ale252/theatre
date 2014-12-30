@@ -3,13 +3,12 @@
 namespace theBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
- * Article
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="theBundle\Entity\ArticleRepository")
- */
+* theBundle\Entity\Article
+*
+* @ORM\Entity
+* @ORM\Table(name="Article")
+*/
 class Article {
 
     /**

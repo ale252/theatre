@@ -1,165 +1,73 @@
-<?php namespace theBundle\Entity;
+<?php
 
-use Doctrine\ORM\Mapping as ORM;
+// src/Blogger/BlogBundle/Entity/Enquiry.php
 
-/**
- * contact
- */
-class contact
-{
-//    /**
-//     * @var integer
-//     */
-//    private $id;
+namespace theBundle\Entity;
+
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\MinLength;
+use Symfony\Component\Validator\Constraints\MaxLength;
+
+class contact {
+
+    protected $nom;
+    protected $prenom;
+    protected $email;
+    protected $sujet;
+    protected $corps;
+
+    public function getNom() {
+        return $this->nom;
+    }
+
+    public function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    public function getPrenom() {
+        return $this->prenom;
+    }
+
+    public function setPrenom($nom) {
+        $this->prenom = $prenom;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getSujet() {
+        return $this->sujet;
+    }
+
+    public function setSujet($sujet) {
+        $this->sujet = $sujet;
+    }
+
+    public function getCorps() {
+        return $this->corps;
+    }
+
+    public function setCorps($corps) {
+        $this->corps = $corps;
+    }
+
+//    public static function loadValidatorMetadata(ClassMetadata $metadata) {
+//        $metadata->addPropertyConstraint('nom', new NotBlank());
+//        $metadata->addPropertyConstraint('prenom', new NotBlank());
 //
-//    /**
-//     * @var string
-//     */
-//    private $nom;
+//        $metadata->addPropertyConstraint('email', new Email());
 //
-//    /**
-//     * @var string
-//     */
-//    private $prenom;
+//        $metadata->addPropertyConstraint('sujet', new NotBlank());
+////        $metadata->addPropertyConstraint('sujet', new MaxLength(50));
 //
-//    /**
-//     * @var string
-//     */
-//    private $email;
-//
-//    /**
-//     * @var string
-//     */
-//    private $sujet;
-//
-//    /**
-//     * @var string
-//     */
-//    private $corps;
-//
-//
-//    /**
-//     * Get id
-//     *
-//     * @return integer 
-//     */
-//    public function getId()
-//    {
-//        return $this->id;
+////        $metadata->addPropertyConstraint('corps', new MinLength(50));
 //    }
-//
-//    /**
-//     * Set nom
-//     *
-//     * @param string $nom
-//     * @return contact
-//     */
-//    public function setNom($nom)
-//    {
-//        $this->nom = $nom;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get nom
-//     *
-//     * @return string 
-//     */
-//    public function getNom()
-//    {
-//        return $this->nom;
-//    }
-//
-//    /**
-//     * Set prenom
-//     *
-//     * @param string $prenom
-//     * @return contact
-//     */
-//    public function setPrenom($prenom)
-//    {
-//        $this->prenom = $prenom;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get prenom
-//     *
-//     * @return string 
-//     */
-//    public function getPrenom()
-//    {
-//        return $this->prenom;
-//    }
-//
-//    /**
-//     * Set email
-//     *
-//     * @param string $email
-//     * @return contact
-//     */
-//    public function setEmail($email)
-//    {
-//        $this->email = $email;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get email
-//     *
-//     * @return string 
-//     */
-//    public function getEmail()
-//    {
-//        return $this->email;
-//    }
-//
-//    /**
-//     * Set sujet
-//     *
-//     * @param string $sujet
-//     * @return contact
-//     */
-//    public function setSujet($sujet)
-//    {
-//        $this->sujet = $sujet;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get sujet
-//     *
-//     * @return string 
-//     */
-//    public function getSujet()
-//    {
-//        return $this->sujet;
-//    }
-//
-//    /**
-//     * Set corps
-//     *
-//     * @param string $corps
-//     * @return contact
-//     */
-//    public function setCorps($corps)
-//    {
-//        $this->corps = $corps;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get corps
-//     *
-//     * @return string 
-//     */
-//    public function getCorps()
-//    {
-//        return $this->corps;
-//    }
+
 }
