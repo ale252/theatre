@@ -1,0 +1,22 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+    <header>
+        <h1>Contacter le théâtre</h1>
+    </header>
+
+    <form action="{{ path('theatre_contact') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.sujet) }}
+        {{ form_row(form.corps) }}
+
+        {{ form_rest(form) }}
+
+        <input class="btn btn-success" type="submit" value="Envoyer votre message" />
+    </form>
+
+{% endblock  %}
