@@ -45,6 +45,9 @@ theatre_panier:
 theatre_interesse:
     path:     /interesse
     defaults: { _controller: theBundle:Default:interesse }
+theatre_album:
+    path:     /album
+    defaults: { _controller: theBundle:Default:album }
 theatre_contact:
     path:     /contact
     defaults: { _controller: theBundle:Default:contact }

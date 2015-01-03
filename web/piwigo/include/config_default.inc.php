@@ -488,11 +488,11 @@ $conf['apache_authentication'] = false;
 //
 // All informations contained in these tables and column are related to
 // piwigo_users table.
-$conf['users_table'] = 'users';
+$conf['users_table'] = null;
 
 // If you decide to use external authentication
 // change conf below by $conf['external_authentification'] = true;
-$conf['external_authentification'] = true;
+$conf['external_authentification'] = false;
 
 // Other tables can be changed, if you define associated constants
 // Example:
@@ -505,7 +505,7 @@ $conf['user_fields'] = array(
   'id' => 'id',
   'username' => 'username',
   'password' => 'password',
-  'email' => 'email'
+  'email' => 'mail_address'
   );
 
 // password_hash: function hash the clear user password to store it in the

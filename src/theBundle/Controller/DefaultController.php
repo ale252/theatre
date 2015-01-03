@@ -18,6 +18,10 @@ class DefaultController extends Controller {
         return $this->render('theBundle:Default:index.html.twig');
     }
 
+    public function albumAction() {
+        return $this->render('theBundle:Default:album.html.twig');
+    }
+
     public function interesseAction() {
         return $this->render('theBundle:Default:interesse.html.twig');
     }
@@ -29,10 +33,17 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('theBundle:Article');
-        $articles = $repository->findAll();
-
+        $articlesB = $repository->findAll();
+        
+        $paginator = $this->get('knp_paginator');
+        $articles = $paginator->paginate(
+                $articlesB, $request->query->get('page', 1)/* page number */, 3/* limit per page */
+        );
+        
+        
         return $this->render('theBundle:Default:articles.html.twig', array('articles' => $articles));
     }
+
     public function zeusAction(Request $request) {
 //        $session = $request->getSession();
 //        $test = $session->get('name');
@@ -150,24 +161,23 @@ class DefaultController extends Controller {
         $contact = new contact();
         $form = $this->createForm(new contactType(), $contact);
 
-        
-        
-            $form->handleRequest($request);
-            if ($form->isValid()) {
 
-                // Perform some action, such as sending an email
-                // Redirect - This is important to prevent users re-posting
-                // the form if they refresh the page
 
-                $message = \Swift_Message::newInstance()
-                        ->setSubject('Contact depuis le site internet du théâtre Création 2017')
-                        ->setFrom('contact@creation2017.ch')
-                        ->setTo('monterroso252@gmail.com')
-                        ->setBody($this->renderView('theBundle:Default:contact.txt.twig', array('contact' => $contact)));
-                $this->get('mailer')->send($message);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
 
-                return $this->redirect($this->generateUrl('theatre_homepage'));
-            
+            // Perform some action, such as sending an email
+            // Redirect - This is important to prevent users re-posting
+            // the form if they refresh the page
+
+            $message = \Swift_Message::newInstance()
+                    ->setSubject('Contact depuis le site internet du théâtre Création 2017')
+                    ->setFrom('contact@creation2017.ch')
+                    ->setTo('monterroso252@gmail.com')
+                    ->setBody($this->renderView('theBundle:Default:contact.txt.twig', array('contact' => $contact)));
+            $this->get('mailer')->send($message);
+
+            return $this->redirect($this->generateUrl('theatre_homepage'));
         }
 
 

@@ -1,9 +1,9 @@
 <?php
 $conf['dblayer'] = 'mysqli';
-$conf['db_base'] = 'piwigo';
-$conf['db_user'] = 'root';
-$conf['db_password'] = '';
-$conf['db_host'] = 'localhost';
+$conf['db_base'] = 'monwi11';
+$conf['db_user'] = 'monwi11';
+$conf['db_password'] = '1FlYJRGxAS7s';
+$conf['db_host'] = 'sql2.cluster1.easy-hebergement.net';
 
 $prefixeTable = 'piwigo_';
 

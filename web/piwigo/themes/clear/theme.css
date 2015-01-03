@@ -7,15 +7,18 @@ INPUT.rateButtonSelected /* <= why IE doesn't inherit this ? */ {
 
 /* backgrounds */
 BODY {
-	background-color: #ffffff;	/* white */
+	background-color: #e8e8e8;
+	background-image: url('images/bg02.png');
 }
 
 H2, #menubar DT, #imageHeaderBar, #imageToolBar A:hover {
-	background-color: #d3d3d3;
+	background-color: #e8e8e8;
+	background-image: url('images/bg02.png');
 }
 
 #menubar DL, .content, #imageToolBar, .switchBox, .header_notes {
-  background-color: #eeeeee;
+  background-color: #e8e8e8;
+	background-image: url('images/bg02.png');
 }
 
 /* borders */
