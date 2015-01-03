@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
 * theBundle\Entity\Article
 *
-* @ORM\Entity
 * @ORM\Table(name="Article")
+* @ORM\Entity(repositoryClass="theBundle\Entity\ArticleRepository")
 */
 class Article {
 
@@ -44,7 +44,7 @@ class Article {
     /**
      * @var string
      *
-     * @ORM\Column(name="date", type="string", length=255)
+     * @ORM\Column(name="date", type="date", length=255)
      */
     private $date;
 

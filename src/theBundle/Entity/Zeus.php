@@ -3,11 +3,12 @@
 namespace theBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
 * theBundle\Entity\Zeus
 *
-* @ORM\Entity
 * @ORM\Table(name="Zeus")
+* @ORM\Entity(repositoryClass="theBundle\Entity\ZeusRepository")
 */
 class Zeus {
 
@@ -44,7 +45,7 @@ class Zeus {
     /**
      * @var string
      *
-     * @ORM\Column(name="date", type="string", length=255)
+     * @ORM\Column(name="date", type="date", length=255)
      */
     private $date;
 
@@ -123,7 +124,7 @@ class Zeus {
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \string $date
      * @return Article
      */
     public function setDate($date) {
@@ -135,7 +136,7 @@ class Zeus {
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \string
      */
     public function getDate() {
         return $this->date;

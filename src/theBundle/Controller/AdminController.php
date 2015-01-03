@@ -63,7 +63,7 @@ class AdminController extends Controller {
                 ->getRepository('theBundle:Article')
                 ->find($id);
         $form = $this->createFormBuilder($article)
-                ->add('date', 'text')
+                ->add('date', 'genemu_jquerydate',array('widget' => 'single_text'))
                 ->add('titre', 'text')
                 ->add('description', 'text')
                 ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '30')))
@@ -89,10 +89,10 @@ class AdminController extends Controller {
                 ->getRepository('theBundle:Zeus')
                 ->find($id);
         $form = $this->createFormBuilder($article)
-                ->add('date', 'text')
+                ->add('date', 'genemu_jquerydate',array('widget' => 'single_text'))
                 ->add('titre', 'text')
                 ->add('description', 'text')
-                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '30','col' => '300')))
+                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '30')))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -114,10 +114,10 @@ class AdminController extends Controller {
         $em = $this->container->get('doctrine')->getManager();
 
         $form = $this->createFormBuilder()
-                ->add('date', 'text')
+                ->add('date', 'genemu_jquerydate',array('widget' => 'single_text'))
                 ->add('titre', 'text')
                 ->add('description', 'text')
-                ->add('content', 'genemu_tinymce', array('attr' => array('rows' => '15')))
+                ->add('content', 'genemu_tinymce', array('attr' => array('rows' => '30')))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -140,10 +140,10 @@ class AdminController extends Controller {
         $em = $this->container->get('doctrine')->getManager();
 
         $form = $this->createFormBuilder()
-                ->add('date', 'text')
+                ->add('date', 'genemu_jquerydate',array('widget' => 'single_text'))
                 ->add('titre', 'text')
                 ->add('description', 'text')
-                ->add('content', 'genemu_tinymce', array('attr' => array('rows' => '15')))
+                ->add('content', 'genemu_tinymce', array('attr' => array('rows' => '30')))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {

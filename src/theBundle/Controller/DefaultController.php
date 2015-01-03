@@ -29,11 +29,11 @@ class DefaultController extends Controller {
     public function articlesAction(Request $request) {
 //        $session = $request->getSession();
 //        $test = $session->get('name');
-        $repository = $this
+        $articlesB = $this
                 ->getDoctrine()
                 ->getManager()
-                ->getRepository('theBundle:Article');
-        $articlesB = $repository->findAll();
+                ->getRepository('theBundle:Article')
+                ->getOrderedArticles();
 
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate(
@@ -47,11 +47,12 @@ class DefaultController extends Controller {
     public function zeusAction(Request $request) {
 //        $session = $request->getSession();
 //        $test = $session->get('name');
-        $repository = $this
+        $articlesB = $this
                 ->getDoctrine()
                 ->getManager()
-                ->getRepository('theBundle:Zeus');
-        $articlesB = $repository->findAll();
+                ->getRepository('theBundle:Zeus')
+                ->getOrderedArticles();
+        
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate(
                 $articlesB, $request->query->get('page', 1)/* page number */, 3/* limit per page */
