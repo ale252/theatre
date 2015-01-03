@@ -70,6 +70,7 @@ class AdminController extends Controller {
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
+            var_dump($form['contenu']->getData());
             $article->setTitre($form['titre']->getData());
             $article->setDescription($form['description']->getData());
             $article->setDate($form['date']->getData());
@@ -95,6 +96,7 @@ class AdminController extends Controller {
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
+            
             $article->setTitre($form['titre']->getData());
             $article->setDescription($form['description']->getData());
             $article->setDate($form['date']->getData());
@@ -119,6 +121,8 @@ class AdminController extends Controller {
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
+            var_dump($form['content']->getData());
+            
             $article->setTitre($form['titre']->getData());
             $article->setDescription($form['description']->getData());
             $article->setDate($form['date']->getData());

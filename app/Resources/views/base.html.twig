@@ -13,12 +13,12 @@
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/reservation.css') }}" />
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('bundles/theatre/css/ie/v8.css') }}" /><![endif]-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-        <noscript>
-        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/skel.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-desktop.css') }}" />
-        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-wide.css') }}" />
-        </noscript>
+{#        <noscript>#}
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/skel.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-desktop.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/style-wide.css') }}">
+{#        </noscript>#}
 
 
         <!-- Les scripts -->
@@ -36,7 +36,24 @@
         <script src="{{ asset('bundles/theatre/js/demarrage/tiny.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/demarrage/datePicker.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/demarrage/mapResponsive.js') }}"></script>
+        <script>
+            function resize_iframe()
+            {
+                var height = window.innerWidth;//Firefox
+                if (document.body.clientHeight)
+                {
+                    height = document.body.clientHeight;//IE
+                }
+                //resize the iframe according to the size of the
+                //window (all these should be on the same line)
+                document.getElementById("glu").style.height =
+                        parseInt(height - document.getElementById("glu").offsetTop - 8) + "px";
+            }
 
+// this will resize the iframe every
+// time you change the size of the window.
+            window.onresize = resize_iframe;
+        </script>
 
     </head>
     <!--
@@ -50,7 +67,7 @@
             <!-- Content -->
             <div id="content" class="gris"  >
                 <div class="inner">
-                    <h2 class="titre1"><span><font size="+3">Création 2017: La Grèce antique conte la Grèce moderne, l'Europe.</font></span></h2>
+                    <h2 class="titre1"><span><font size="+3">Création 2017: La Grèce antique contre la Grèce moderne, l'Europe.</font></span></h2>
                     <div class="titre11">
                         {% block content %}
                         {% endblock %}
@@ -75,14 +92,14 @@
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_zeus') %}class="current"{% endif %}><a href="{{ path('theatre_zeus') }}">Zeus</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_billeterie') %}class="current"{% endif %}><a href="{{ path('theatre_billeterie') }}">Billetterie</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_interesse') %}class="current"{% endif %}><a href="{{ path('theatre_interesse') }}">Intéressé?</a></li>
-{#                        <li {% if path(app.request.attributes.get('_route')) == path('theatre_contact') %}class="current"{% endif %}><a href="{{ path('theatre_contact') }}">Contact</a></li>#}
+                        <li {% if path(app.request.attributes.get('_route')) == 'album' %}class="current"{% endif %}><a href="http://album.tragedie2017.ch">Album photos</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_contact') %}class="current"{% endif %}><a href="{{ path('theatre_contact') }}">Contact</a></li>
                     </ul>
 
                     <!-- Nav -->
                     {{ render(controller('theBundle:Default:menu')) }}
                 </nav>
-                
+
             </div>
 
         </div>
