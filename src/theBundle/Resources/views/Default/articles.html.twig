@@ -44,10 +44,6 @@
                     <span class="date"><span class="month">Nov<span>y</span></span> <span class="day">{{ article.date|date("d")}}</span><span class="year">, {{ article.date|date("y")}}</span></span>
 
                 {% endif %}
-                {#<ul class="stats">
-                    <li><a href="#" class="icon fa-heart">32</a></li>
-                    <li><a href="#" class="icon fa-facebook">128</a></li>
-                </ul>#}
             </div>
             {#            <a href="#" class="image featured"><img src="{{ asset('bundles/theatre/images/pic01.jpg') }}" alt="" /></a>#}
             {{article.contenu|raw}}
@@ -58,7 +54,7 @@
         <hr class="separation" />
     {% endfor %}
 
-<div class="navigation">
-    {{ knp_pagination_render(articles) }}
-</div>
+    <div class="navigation">
+        {{ knp_pagination_render(articles) }}
+    </div>
 {% endblock %}

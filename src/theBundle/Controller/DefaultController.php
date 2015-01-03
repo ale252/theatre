@@ -34,13 +34,13 @@ class DefaultController extends Controller {
                 ->getManager()
                 ->getRepository('theBundle:Article');
         $articlesB = $repository->findAll();
-        
+
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate(
                 $articlesB, $request->query->get('page', 1)/* page number */, 3/* limit per page */
         );
-        
-        
+
+
         return $this->render('theBundle:Default:articles.html.twig', array('articles' => $articles));
     }
 
@@ -51,8 +51,11 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('theBundle:Zeus');
-        $articles = $repository->findAll();
-
+        $articlesB = $repository->findAll();
+        $paginator = $this->get('knp_paginator');
+        $articles = $paginator->paginate(
+                $articlesB, $request->query->get('page', 1)/* page number */, 3/* limit per page */
+        );
         return $this->render('theBundle:Default:zeus.html.twig', array('zeus' => $articles));
     }
 

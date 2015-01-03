@@ -66,7 +66,7 @@ class AdminController extends Controller {
                 ->add('date', 'text')
                 ->add('titre', 'text')
                 ->add('description', 'text')
-                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '15')))
+                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '30')))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -92,7 +92,7 @@ class AdminController extends Controller {
                 ->add('date', 'text')
                 ->add('titre', 'text')
                 ->add('description', 'text')
-                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '15')))
+                ->add('contenu', 'genemu_tinymce', array('attr' => array('rows' => '30','col' => '300')))
                 ->getForm();
         $form->handleRequest($request);
         if ($form->isValid()) {
