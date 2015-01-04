@@ -33,7 +33,7 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('theBundle:Article')
-                ->getOrderedArticles();
+                ->findBy(array(), array('date' => 'ASC'));
 
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate(
@@ -51,8 +51,8 @@ class DefaultController extends Controller {
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('theBundle:Zeus')
-                ->getOrderedArticles();
-        
+                ->findBy(array(), array('date' => 'ASC'));
+
         $paginator = $this->get('knp_paginator');
         $articles = $paginator->paginate(
                 $articlesB, $request->query->get('page', 1)/* page number */, 3/* limit per page */
