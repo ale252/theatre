@@ -5,12 +5,14 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-
+        <link rel="icon" type="image/png" href="{{ asset('bundles/theatre/images/icone32.png') }}" />
 
         <!-- Les CSS -->
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/css.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/theatre/css/reservation.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/theatre/css/identification.css') }}" />
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('bundles/theatre/css/ie/v8.css') }}" /><![endif]-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
         <noscript>
@@ -23,11 +25,211 @@
 
         <!-- Les scripts -->
         <!--[if lte IE 8]><script src="{{ asset('bundles/theatre/css/ie/html5shiv.js') }}"></script><![endif]-->
+{#        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>#}
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="{{ asset('bundles/theatre/js/skel.min.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/skel-layers.min.js') }}"></script>
-        <script src="{{ asset('bundles/theatre/js/init.js') }}"></script>
+        {#        <script src="{{ asset('bundles/theatre/js/init.js') }}"></script>#}
+        <script>
+            (function ($) {
+
+                skel.init({
+                    reset: 'full',
+                    breakpoints: {
+                        global: {range: '*', href: "{{ asset('bundles/theatre/css/style.css') }}", containers: '100%', grid: {gutters: 50}, viewport: {scalable: false}},
+                        desktop: {range: '641-', href: "{{ asset('bundles/theatre/css/style-desktop.css') }}"},
+                        wide: {range: '1201-', href: "{{ asset('bundles/theatre/css/style-wide.css') }}"},
+                        narrow: {range: '737-1200', href: "{{ asset('bundles/theatre/css/style-narrow.css') }}"},
+                        narrower: {range: '737-1000', href: "{{ asset('bundles/theatre/css/style-narrower.css') }}"},
+                        mobile: {range: '-736', href: "{{ asset('bundles/theatre/css/style-mobile.css') }}", containers: '100%!', grid: {collapse: true}}
+                    },
+                    plugins: {
+                        layers: {
+                            sidePanel: {
+                                animation: 'revealX',
+                                breakpoints: ['narrower', 'mobile'],
+                                clickToHide: true,
+                                height: '100%',
+                                hidden: true,
+                                html: '<div data-action="moveElement" data-args="sidebar"></div>',
+                                orientation: 'vertical',
+                                position: 'top-left',
+                                side: 'left',
+                                width: 275
+                            },
+                            titleBar: {
+                                breakpoints: ['narrower', 'mobile'],
+                                height: 44,
+                                html: '<span class="toggle" data-action="toggleLayer" data-args="sidePanel"></span><span class="title" data-action="copyText" data-args="logo"></span>',
+                                position: 'top-left',
+                                side: 'top',
+                                width: '100%'
+                            }
+                        }
+                    }
+                });
+
+                $(function () {
+
+                    var $window = $(window),
+                            $body = $('body'),
+                            $document = $(document);
+
+                    // Disable animations/transitions until the page has loaded.
+                    $body.addClass('is-loading');
+
+                    $window.on('load', function () {
+                        $body.removeClass('is-loading');
+                    });
+
+                    // Forms (IE<10).
+                    var $form = $('form');
+                    if ($form.length > 0) {
+
+                        if (skel.vars.IEVersion < 10) {
+                            $.fn.n33_formerize = function () {
+                                var _fakes = new Array(), _form = $(this);
+                                _form.find('input[type=text],textarea').each(function () {
+                                    var e = $(this);
+                                    if (e.val() == '' || e.val() == e.attr('placeholder')) {
+                                        e.addClass('formerize-placeholder');
+                                        e.val(e.attr('placeholder'));
+                                    }
+                                }).blur(function () {
+                                    var e = $(this);
+                                    if (e.attr('name').match(/_fakeformerizefield$/))
+                                        return;
+                                    if (e.val() == '') {
+                                        e.addClass('formerize-placeholder');
+                                        e.val(e.attr('placeholder'));
+                                    }
+                                }).focus(function () {
+                                    var e = $(this);
+                                    if (e.attr('name').match(/_fakeformerizefield$/))
+                                        return;
+                                    if (e.val() == e.attr('placeholder')) {
+                                        e.removeClass('formerize-placeholder');
+                                        e.val('');
+                                    }
+                                });
+                                _form.find('input[type=password]').each(function () {
+                                    var e = $(this);
+                                    var x = $($('<div>').append(e.clone()).remove().html().replace(/type="password"/i, 'type="text"').replace(/type=password/i, 'type=text'));
+                                    if (e.attr('id') != '')
+                                        x.attr('id', e.attr('id') + '_fakeformerizefield');
+                                    if (e.attr('name') != '')
+                                        x.attr('name', e.attr('name') + '_fakeformerizefield');
+                                    x.addClass('formerize-placeholder').val(x.attr('placeholder')).insertAfter(e);
+                                    if (e.val() == '')
+                                        e.hide();
+                                    else
+                                        x.hide();
+                                    e.blur(function (event) {
+                                        event.preventDefault();
+                                        var e = $(this);
+                                        var x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]');
+                                        if (e.val() == '') {
+                                            e.hide();
+                                            x.show();
+                                        }
+                                    });
+                                    x.focus(function (event) {
+                                        event.preventDefault();
+                                        var x = $(this);
+                                        var e = x.parent().find('input[name=' + x.attr('name').replace('_fakeformerizefield', '') + ']');
+                                        x.hide();
+                                        e.show().focus();
+                                    });
+                                    x.keypress(function (event) {
+                                        event.preventDefault();
+                                        x.val('');
+                                    });
+                                });
+                                _form.submit(function () {
+                                    $(this).find('input[type=text],input[type=password],textarea').each(function (event) {
+                                        var e = $(this);
+                                        if (e.attr('name').match(/_fakeformerizefield$/))
+                                            e.attr('name', '');
+                                        if (e.val() == e.attr('placeholder')) {
+                                            e.removeClass('formerize-placeholder');
+                                            e.val('');
+                                        }
+                                    });
+                                }).bind("reset", function (event) {
+                                    event.preventDefault();
+                                    $(this).find('select').val($('option:first').val());
+                                    $(this).find('input,textarea').each(function () {
+                                        var e = $(this);
+                                        var x;
+                                        e.removeClass('formerize-placeholder');
+                                        switch (this.type) {
+                                            case 'submit':
+                                            case 'reset':
+                                                break;
+                                            case 'password':
+                                                e.val(e.attr('defaultValue'));
+                                                x = e.parent().find('input[name=' + e.attr('name') + '_fakeformerizefield]');
+                                                if (e.val() == '') {
+                                                    e.hide();
+                                                    x.show();
+                                                } else {
+                                                    e.show();
+                                                    x.hide();
+                                                }
+                                                break;
+                                            case 'checkbox':
+                                            case 'radio':
+                                                e.attr('checked', e.attr('defaultValue'));
+                                                break;
+                                            case 'text':
+                                            case 'textarea':
+                                                e.val(e.attr('defaultValue'));
+                                                if (e.val() == '') {
+                                                    e.addClass('formerize-placeholder');
+                                                    e.val(e.attr('placeholder'));
+                                                }
+                                                break;
+                                            default:
+                                                e.val(e.attr('defaultValue'));
+                                                break;
+                                        }
+                                    });
+                                    window.setTimeout(function () {
+                                        for (x in _fakes)
+                                            _fakes[x].trigger('formerize_sync');
+                                    }, 10);
+                                });
+                                return _form;
+                            };
+                            $form.n33_formerize();
+                        }
+
+                    }
+
+                    // Sidebar height hack.
+                    var $sc = $('#sidebar, #content'), tid;
+
+                    $window
+                            .on('resize', function () {
+                                window.clearTimeout(tid);
+                                tid = window.setTimeout(function () {
+                                    if (skel.isActive('mobile') || skel.isActive('narrower'))
+                                        $sc.css('min-height', '0').css('height', 'auto');
+                                    else
+                                        $sc.css('min-height', $window.height()).css('height', $document.height());
+                                }, 100);
+                            })
+                            .on('load', function () {
+                                $window.trigger('resize');
+                            })
+                            .trigger('resize');
+
+                });
+
+            })(jQuery);
+        </script>
         <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
         <script src="{{ asset('bundles/theatre/langs/fr_FR.js') }}"></script>
         <script src="{{ asset('bundles/theatre/js/tinymce/tinymce.min.js') }}"></script>

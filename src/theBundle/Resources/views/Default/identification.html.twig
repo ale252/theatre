@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+    <div>
+        <div class="identificationLogin">
+            Vous avez déjà un compte?
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ fos_csrf_provider.generateCsrfToken('authenticate') }}" />
+                <label for="username"><font color="white">Nom d'utilisateur:</font></label>
+                <input type="text" id="username" name="_username" value="" required="required" />
+
+                <label for="password"><font color="white">Mot de passe:</font></label>
+                <input type="password" id="password" name="_password" required="required" />
+                <label class="remeber" for="remember_me"><font color="black">Se souvenir de moi:</font></label>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" /><br />
+                <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+                <input class="btn btn-success col-md-12" type="submit" id="_submit" name="_submit" value="Connexion" />
+            </form>
+        </div>
+        <div class="identificationRegister">
+            Vous n'avez pas encore de compte?
+            <form action="{{ path("fos_registeristration") }}" method="post">
+                
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+

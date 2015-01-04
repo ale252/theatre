@@ -25,6 +25,9 @@ class DefaultController extends Controller {
     public function interesseAction() {
         return $this->render('theBundle:Default:interesse.html.twig');
     }
+    public function identificationAction() {
+        return $this->render('theBundle:Default:identification.html.twig');
+    }
 
     public function articlesAction(Request $request) {
 //        $session = $request->getSession();
