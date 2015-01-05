@@ -13,14 +13,44 @@
                 <label class="remeber" for="remember_me"><font color="black">Se souvenir de moi:</font></label>
                 <input type="checkbox" id="remember_me" name="_remember_me" value="on" /><br />
                 <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
-                <input class="btn btn-success col-md-12" type="submit" id="_submit" name="_submit" value="Connexion" />
+                <input class="btn btn-success col-md-12" type="submit" id="_submit" name="_submit" value="Se connecter" />
             </form>
         </div>
         <div class="identificationRegister">
             Vous n'avez pas encore de compte?
-            <form action="{{ path("fos_registeristration") }}" method="post">
-                
+            {#{% if form_errors(form.username) or form_errors(form.email) or form_errors(form.plainPassword.first) %}
+                <div class="alert alert-danger error">
+                    {{form_errors(form.username)}}
+                    {{form_errors(form.email)}}
+                    {{form_errors(form.plainPassword.first)}}
+                </div>
+            {% endif%}#}
+            <form action="{{ path('fos_user_registration_register') }}"  method="POST" class="fos_user_registration_register">
+                <label class="registrationLabel">                <label for="fos_user_registration_form_nom" class="required">Votre nom:</label></label>
+                <input type="text" id="fos_user_registration_form_nom" name="fos_user_registration_form[nom]" required="required" maxlength="255" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_prenom" class="required">Votre prénom:</label></label>
+                <input type="text" id="fos_user_registration_form_prenom" name="fos_user_registration_form[prenom]" required="required" maxlength="255" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_adresse" class="required">Votre adresse:</label></label>
+                <input type="text" id="fos_user_registration_form_adresse" name="fos_user_registration_form[adresse]" required="required" maxlength="255" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_npa" class="required">Votre code postal:</label></label>
+                <input type="text" id="fos_user_registration_form_npa" name="fos_user_registration_form[npa]" required="required" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_localite" class="required">Votre localité:</label></label>
+                <input type="text" id="fos_user_registration_form_localite" name="fos_user_registration_form[localite]" required="required" maxlength="255" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_email" class="required">Votre adresse e-mail:</label></label>
+                <input type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_username" class="required">Choisissze un nom d&#039;utilisateur:</label></label>
+                <input type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" pattern=".{2,}" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_plainPassword_first" class="required">Choisissez un mot de passe:</label></label>
+                <input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" />
+                <label class="registrationLabel">                <label for="fos_user_registration_form_plainPassword_second" class="required">Réinscrivez votre mot de passe:</label></label>
+                <input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" />
+                <input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="DnrhNZPEXCsermh-HJjHB_Zcny5eehbt3lv9r-0u1_k" />
+                <div>
+                    <input  class="btn btn-success col-md-12 registrationLabel" type="submit" value="S'enregistrer" />
+                </div>
             </form>
+
+
         </div>
     </div>
 {% endblock %}

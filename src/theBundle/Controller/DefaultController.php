@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use theBundle\Entity\panier;
 use theBundle\Form\CartType;
 use theBundle\Form\contactType;
+use theBundle\Form\ComiteType;
 use theBundle\Form\BilletType;
 
 class DefaultController extends Controller {
@@ -23,8 +24,42 @@ class DefaultController extends Controller {
     }
 
     public function interesseAction() {
-        return $this->render('theBundle:Default:interesse.html.twig');
+        $interet = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:Interet')
+                ->find(1);
+
+        return $this->render('theBundle:Default:interesse.html.twig',array('interet' => $interet));
     }
+    public function creationAction() {
+        $creation = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:Creation')
+                ->find(1);
+
+        return $this->render('theBundle:Default:creation.html.twig',array('creation' => $creation));
+    }
+    public function lieuAction() {
+        $lieu = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:Lieu')
+                ->find(1);
+
+        return $this->render('theBundle:Default:lieu.html.twig',array('lieu' => $lieu));
+    }
+    public function comiteAction() {
+        $comite = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('theBundle:Comite')
+                ->find(1);
+
+        return $this->render('theBundle:Default:comite.html.twig',array('comite' => $comite));
+    }
+
     public function identificationAction() {
         return $this->render('theBundle:Default:identification.html.twig');
     }

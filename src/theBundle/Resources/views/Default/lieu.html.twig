@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('theatre_modifierLieu') }}"><span class="iconAdd glyphicon glyphicon-pencil icon1"></span></a>
+        {% endif %}
+
+        {{ lieu.contenu|raw }}
+
+
+
+
+{% endblock %}

@@ -5,6 +5,15 @@ theatre_homepage:
 theatre_articles:
     path:     /articles
     defaults: { _controller: theBundle:Default:articles }
+theatre_creation:
+    path:     /creation
+    defaults: { _controller: theBundle:Default:creation }
+theatre_lieu:
+    path:     /lieu
+    defaults: { _controller: theBundle:Default:lieu }
+theatre_comite:
+    path:     /comite
+    defaults: { _controller: theBundle:Default:comite }
 
 theatre_zeus:
     path:     /zeus
@@ -51,6 +60,18 @@ theatre_album:
 theatre_identification:
     path:     /identification
     defaults: { _controller: theBundle:Default:identification }
+theatre_modifierInteret:
+    path:     /modifierInteret
+    defaults: { _controller: theBundle:Admin:modifierInteret }
+theatre_modifierCreation:
+    path:     /modifierCreation
+    defaults: { _controller: theBundle:Admin:modifierCreation }
+theatre_modifierLieu:
+    path:     /modifierLieu
+    defaults: { _controller: theBundle:Admin:modifierLieu }
+theatre_modifierComite:
+    path:     /modifierComite
+    defaults: { _controller: theBundle:Admin:modifierComite }
 theatre_contact:
     path:     /contact
     defaults: { _controller: theBundle:Default:contact }

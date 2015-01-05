@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+    
+     <form action="{{ path('theatre_modifierLieu') }}" method="post">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.contenu) }}
+
+        {{ form_rest(form) }}
+
+        <input class="btn btn-success" type="submit" value="Enregistrer le contenu" />
+    </form>
+    
+{% endblock %}
+
+

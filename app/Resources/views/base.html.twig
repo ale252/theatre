@@ -294,7 +294,10 @@
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_homepage') %}class="current"{% endif %}><a href="{{ path('theatre_homepage') }}">Événements</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_zeus') %}class="current"{% endif %}><a href="{{ path('theatre_zeus') }}">Zeus</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_billeterie') %}class="current"{% endif %}><a href="{{ path('theatre_billeterie') }}">Billetterie</a></li>
-                        <li {% if path(app.request.attributes.get('_route')) == path('theatre_interesse') %}class="current"{% endif %}><a href="{{ path('theatre_interesse') }}">Intéressé?</a></li>
+                        <li {% if path(app.request.attributes.get('_route')) == path('theatre_interesse') %}class="current"{% endif %}><a href="{{ path('theatre_interesse') }}">Interêt pour la pièce?</a></li>
+                        <li {% if path(app.request.attributes.get('_route')) == path('theatre_creation') %}class="current"{% endif %}><a href="{{ path('theatre_creation') }}">Création</a></li>
+                        <li {% if path(app.request.attributes.get('_route')) == path('theatre_lieu') %}class="current"{% endif %}><a href="{{ path('theatre_lieu') }}">Lieu</a></li>
+                        <li {% if path(app.request.attributes.get('_route')) == path('theatre_comite') %}class="current"{% endif %}><a href="{{ path('theatre_comite') }}">Comité</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == 'album' %}class="current"{% endif %}><a href="{{ path('theatre_album') }}">Album photos</a></li>
                         <li {% if path(app.request.attributes.get('_route')) == path('theatre_contact') %}class="current"{% endif %}><a href="{{ path('theatre_contact') }}">Contact</a></li>
                     </ul>
